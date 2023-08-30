@@ -2,13 +2,18 @@ within EHPTexamples.EV;
 model FirstEV "Simulates a very basic Electric Vehicle"
   import Modelica;
   extends Modelica.Icons.Example;
-  EHPTlib.SupportModels.Miscellaneous.DragForce dragF(Cx = 0.26, S = 2.2, fc = 0.014, m = mass.m, rho(displayUnit = "kg/m3") = 1.226) annotation (
+  EHPTlib.SupportModels.Miscellaneous.DragForce dragF(Cx = 0.26, S = 2.2,
+  fc = 0.014, m = mass.m, rho(displayUnit = "kg/m3") = 1.226,
+    v(start=0, fixed=true))                                                                                                           annotation (
     Placement(visible = true, transformation(origin = {82, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  Modelica.Mechanics.Rotational.Components.IdealGear gear(ratio = 4) annotation (
+  Modelica.Mechanics.Rotational.Components.IdealGear gear(ratio = 4, flange_b(
+        phi(start=0, fixed=true)))     annotation (
     Placement(visible = true, transformation(origin = {-14, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Sources.Torque torque annotation (
     Placement(visible = true, transformation(extent = {{-82, 10}, {-62, 30}}, rotation = 0)));
-  EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = "NEDC.txt", extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = 1000, yMax = 100000.0) annotation (
+  EHPTlib.SupportModels.Miscellaneous.PropDriver driver(
+    CycleFileName=Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/NEDC.txt"),
+            extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = 1000, yMax = 100000.0) annotation (
     Placement(visible = true, transformation(extent = {{-118, 14}, {-98, 34}}, rotation = 0)));
   Modelica.Mechanics.Translational.Components.Mass mass(m = 1300) annotation (
     Placement(visible = true, transformation(extent = {{34, 10}, {54, 30}}, rotation = 0)));
@@ -41,7 +46,11 @@ equation
 <p>Very basic introductory EV model</p>
 </html>"),
     Commands,
-    Diagram(coordinateSystem(extent = {{-120, -40}, {100, 40}}, preserveAspectRatio = false), graphics={  Rectangle(origin = {-6, 0}, lineColor = {28, 108, 200}, pattern = LinePattern.Dash, extent = {{-84, 36}, {-24, 4}}), Text(origin = {-6, 0}, lineColor = {28, 108, 200}, pattern = LinePattern.Dash, extent = {{-82, 2}, {-26, -4}}, textString = "electric drive")}),
+    Diagram(coordinateSystem(extent = {{-120, -40}, {100, 40}}, preserveAspectRatio = false),
+      graphics={  Rectangle(origin = {-6, 0}, lineColor = {28, 108, 200},
+      pattern = LinePattern.Dash, extent = {{-84, 36}, {-24, 4}}),
+      Text(origin = {-6, 0}, lineColor = {28, 108, 200}, pattern = LinePattern.Dash,
+      extent = {{-82, 2}, {-26, -4}}, textString = "electric drive")}),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
     experiment(StartTime = 0, StopTime = 200, Tolerance = 0.0001, Interval = 0.1),
     __OpenModelica_simulationFlags(jacobian = "", s = "dassl", lv = "LOG_STATS"),

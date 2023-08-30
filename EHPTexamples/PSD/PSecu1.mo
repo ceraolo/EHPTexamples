@@ -3,15 +3,17 @@ model PSecu1 "Full Power Split Device power train using Map-Based components"
   import Modelica.Constants.*;
   extends Modelica.Icons.Example;
   parameter Modelica.Units.SI.AngularVelocity wIceStart = 50;
-  Modelica.Units.SI.Energy EbatDel "energy delivered by the battery";
-  Modelica.Units.SI.Energy EgenDelM "energy delivered by gen trough mechanical flange";
-  Modelica.Units.SI.Energy Eroad "mechanical energy absorbed by roas (friction & air)";
-  Modelica.Units.SI.Energy EiceDel "mechanical energy delivered by ice";
-  Modelica.Units.SI.Energy Emot;
+  Modelica.Units.SI.Energy EbatDel(start=0, fixed=true) "energy delivered by the battery";
+  Modelica.Units.SI.Energy EgenDelM( start=0, fixed=true)
+                                                         "energy delivered by gen trough mechanical flange";
+  Modelica.Units.SI.Energy Eroad(start=0, fixed=true) "mechanical energy absorbed by roas (friction & air)";
+  Modelica.Units.SI.Energy EiceDel(start=0, fixed=true) "mechanical energy delivered by ice";
+  Modelica.Units.SI.Energy Emot(start=0, fixed=true);
   Modelica.Units.SI.Energy Emass;
   Modelica.Mechanics.Rotational.Components.IdealPlanetary PSD(ratio = 78 / 30) annotation (
     Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 0, origin = {-50, 52})));
-  Modelica.Mechanics.Rotational.Components.IdealGear idealGear(ratio = 3.905) annotation (
+  Modelica.Mechanics.Rotational.Components.IdealGear idealGear(ratio = 3.905, flange_b(
+        phi(start=0, fixed=true)))                                            annotation (
     Placement(transformation(extent = {{2, 42}, {22, 62}})));
   Modelica.Mechanics.Translational.Sensors.SpeedSensor carVel annotation (
     Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 270, origin = {78, -12})));
@@ -19,7 +21,8 @@ model PSecu1 "Full Power Split Device power train using Map-Based components"
     Placement(transformation(extent = {{54, 42}, {74, 62}})));
   EHPTlib.SupportModels.Miscellaneous.DragForce dragForce(fc = 0.014, rho = 1.226, S = 2.2, Cx = 0.26, m = mass.m) annotation (
     Placement(transformation(extent = {{-9, -9}, {9, 9}}, rotation = 90, origin = {89, 29})));
-  EHPTlib.MapBased.IceConnP ice annotation (
+  EHPTlib.MapBased.IceConnP ice(flange_a(phi(start=0, fixed=true)))
+                                annotation (
     Placement(transformation(extent = {{-98, 46}, {-78, 66}})));
   EHPTlib.SupportModels.Miscellaneous.Batt1Conn bat(ECellMin = 0.9, ECellMax = 1.45, R0Cell = 0.0003, ns = 168, QCellNom = 2 * 6.5 * 3600.0, SOCInit = 0.6, ICellMax = 1e5, iCellEfficiency = 15 * 6.5) annotation (
     Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-16, 0})));

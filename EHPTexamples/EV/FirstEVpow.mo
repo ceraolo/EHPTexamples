@@ -2,9 +2,11 @@ within EHPTexamples.EV;
 model FirstEVpow "Simulates a very basic Electric Vehicle"
   import Modelica;
   extends Modelica.Icons.Example;
-  EHPTlib.SupportModels.Miscellaneous.DragForce dragF(Cx = 0.26, S = 2.2, fc = 0.014, m = mass.m, rho(displayUnit = "kg/m3") = 1.226) annotation (
+  EHPTlib.SupportModels.Miscellaneous.DragForce dragF(Cx = 0.26, S = 2.2,
+  fc = 0.014, m = mass.m, rho(displayUnit = "kg/m3") = 1.226,  v(start=0, fixed=true)) annotation (
     Placement(visible = true, transformation(origin = {100, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  Modelica.Mechanics.Rotational.Components.IdealGear gear(ratio = 4) annotation (
+  Modelica.Mechanics.Rotational.Components.IdealGear gear(ratio = 4, flange_b(
+        phi(start=0, fixed=true))) annotation (
     Placement(visible = true, transformation(origin = {-8, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Sources.Torque torque annotation (
     Placement(visible = true, transformation(extent = {{-76, 10}, {-56, 30}}, rotation = 0)));
@@ -52,6 +54,5 @@ equation
     Commands,
     Diagram(coordinateSystem(extent = {{-120, -40}, {120, 40}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2}), graphics={  Rectangle(extent = {{-84, 36}, {-24, 4}}, lineColor = {28, 108, 200}, pattern = LinePattern.Dash), Text(extent = {{-82, 2}, {-26, -4}}, lineColor = {28, 108, 200}, pattern = LinePattern.Dash, textString = "electric drive")}),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
-    experiment(StartTime = 0, StopTime = 200, Tolerance = 0.0001, Interval = 0.1),
-    __OpenModelica_simulationFlags(jacobian = "", s = "dassl", lv = "LOG_STATS"));
+    experiment(StartTime = 0, StopTime = 200, Tolerance = 0.0001, Interval = 0.1));
 end FirstEVpow;

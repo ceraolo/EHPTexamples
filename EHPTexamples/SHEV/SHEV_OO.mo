@@ -44,7 +44,7 @@ equation
   connect(drive.flange_a, gear.flange_a) annotation (
     Line(points = {{84, 7.11111}, {94, 7.11111}, {94, -24}, {-94, -24}, {-94, -42}, {-82, -42}, {-82, -42}, {-82, -42}}));
   connect(drivePow.power, ems.edPow) annotation (
-    Line(points = {{32, 5}, {16, 5}, {16, 64}, {-8, 64}, {-8, 64}}, color = {0, 0, 127}));
+    Line(points={{30,5},{16,5},{16,64},{-8,64},{-8,64}},            color = {0, 0, 127}));
   connect(drivePow.nv, drive.pin_p) annotation (
     Line(points = {{40, 6}, {40, 6}, {40, 0}, {64, 0}, {64, 2.66667}}, color = {0, 0, 255}));
   connect(drivePow.pc, battery.p) annotation (
@@ -52,7 +52,7 @@ equation
   connect(drivePow.pv, drivePow.nc) annotation (
     Line(points = {{40, 26}, {50, 26}, {50, 16}, {50, 16}}, color = {0, 0, 255}));
   connect(drivePow.nc, drive.pin_n) annotation (
-    Line(points = {{50, 16}, {64, 16}, {64, 11.5556}, {64, 11.5556}}, color = {0, 0, 255}));
+    Line(points={{50,16},{64,16},{64,11.5556},{64,11.5556}},          color = {0, 0, 255}));
   connect(driver.tauRef, drive.tauRef) annotation (
     Line(points = {{75, 60}, {57, 60}, {57, 4.5}, {62.6, 4.5}, {62.6, 7.11111}}, color = {0, 0, 127}));
   connect(ground1.p, drive.pin_p) annotation (
@@ -85,7 +85,6 @@ equation
     Diagram(coordinateSystem(extent = {{-100, -80}, {100, 80}}, initialScale = 0.1), graphics={  Rectangle(origin = {-2, 4}, lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-88, -32}, {94, -74}}), Rectangle(origin = {-4, 0}, lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-88, 40}, {94, -20}}), Text(origin = {0, 4}, lineColor = {255, 0, 0}, fillPattern = FillPattern.Solid, extent = {{-96, -64}, {-44, -72}}, textString = "MechProp")}),
     Icon(coordinateSystem(preserveAspectRatio = true, extent = {{-100, -100}, {100, 100}}), graphics),
     experiment(StopTime = 2000, StartTime = 0, Tolerance = 1e-06, Interval = 0.4),
-    experimentSetupOutput(derivatives = false),
     Documentation(info = "<html>
 <p>This is a SHEV model which has an Energy Management System able to control the power flow with:</p>
 <p>- basic logic: requests the ICE to deliver the average load power </p>

@@ -2,12 +2,12 @@ within EHPTexamples.EV;
 model MBEV "Simulates a very basic Electric Vehicle"
   import Modelica;
   extends Modelica.Icons.Example;
-  Modelica.Units.SI.Energy enBatDel;
-  Modelica.Units.SI.Energy enDTdel;
-  Modelica.Units.SI.Energy enP1del;
-  Modelica.Units.SI.Energy enBattLoss;
-  Modelica.Units.SI.Energy enBraking;
-  Modelica.Mechanics.Rotational.Components.IdealGear gear(ratio = 6) annotation (
+  Modelica.Units.SI.Energy enBatDel(start=0, fixed=true);
+  Modelica.Units.SI.Energy enDTdel(start=0, fixed=true);
+  Modelica.Units.SI.Energy enP1del(start=0, fixed=true);
+  Modelica.Units.SI.Energy enBattLoss(start=0, fixed=true);
+  Modelica.Units.SI.Energy enBraking(start=0, fixed=true);
+  Modelica.Mechanics.Rotational.Components.IdealGear gear(ratio = 6, flange_b(  phi(start=0, fixed=true))) annotation (
     Placement(visible = true, transformation(origin = {-20, 14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = "NEDC.txt", extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, yMax = 100000.0, k = 100) annotation (
     Placement(visible = true, transformation(extent = {{-116, -10}, {-96, 10}}, rotation = 0)));
@@ -15,19 +15,22 @@ model MBEV "Simulates a very basic Electric Vehicle"
     Placement(visible = true, transformation(extent = {{-4, 4}, {16, 24}}, rotation = 0)));
   EHPTlib.MapBased.OneFlange eleDrive(J = 0.25, effTableName = "effTable", mapsFileName = "EVmaps.txt", mapsOnFile = true, tauMax = 150, wMax = 500) "Electric Drive" annotation (
     Placement(visible = true, transformation(extent = {{-74, 6}, {-54, 24}}, rotation = 0)));
-  EHPTlib.SupportModels.Miscellaneous.Batt1 batt1(SOCInit = 0.7, QCellNom = 100 * 3600, ns = 100) annotation (
+  EHPTlib.SupportModels.Miscellaneous.Batt1 batt1(SOCInit = 0.7, QCellNom = 100 * 3600, ns = 100,
+    C1(v(start=0, fixed=true)))                                                                   annotation (
     Placement(transformation(extent = {{-112, 34}, {-92, 54}})));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (
     Placement(visible = true, transformation(extent = {{-84, -20}, {-64, 0}}, rotation = 0)));
   Modelica.Mechanics.Translational.Sensors.PowerSensor mP1 annotation (
     Placement(visible = true, transformation(origin = {32, 14}, extent = {{-6, -8}, {6, 8}}, rotation = 0)));
-  Modelica.Mechanics.Translational.Components.Mass mass(m = 1300) annotation (
+  Modelica.Mechanics.Translational.Components.Mass mass(m = 1300, v(fixed=true))
+                                                                  annotation (
     Placement(visible = true, transformation(extent = {{56, 4}, {76, 24}}, rotation = 0)));
   Modelica.Mechanics.Translational.Sensors.PowerSensor mP2 annotation (
     Placement(visible = true, transformation(origin = {98, 4}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Modelica.Mechanics.Translational.Sensors.SpeedSensor velSens annotation (
     Placement(visible = true, transformation(origin = {68, -42}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
-  EHPTlib.SupportModels.Miscellaneous.DragForce dragF(Cx = 0.26, rho = 1.226, S = 2.2, fc = 0.014, m = mass.m) annotation (
+  EHPTlib.SupportModels.Miscellaneous.DragForce dragF(Cx = 0.26, rho = 1.226,
+  S = 2.2, fc = 0.014, m = mass.m,  v(start=0, fixed=true)) annotation (
     Placement(visible = true, transformation(origin = {98, -24}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   Modelica.Mechanics.Translational.Sources.Force brake annotation (
     Placement(visible = true, transformation(origin = {32, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -74,7 +77,7 @@ equation
     Line(points = {{98, -14}, {98, -6}}, color = {0, 127, 0}));
   der(enBatDel) = (batt1.p.v - batt1.n.v) * batt1.n.i;
   der(enDTdel) = eleDrive.powSensor.power;
-  der(enP1del) =mP1.power;
+  der(enP1del) = mP1.power;
   der(enBattLoss) = batt1.powerLoss;
   der(enBraking) = if mP1.power > 0 then 0 else -mP1.power;
   connect(add.u2, driver.tauRef) annotation (
@@ -91,6 +94,5 @@ equation
     Commands,
     Diagram(coordinateSystem(extent = {{-120, -60}, {120, 60}}, preserveAspectRatio = false)),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
-    experiment(StartTime = 0, StopTime = 1400, Tolerance = 0.0001, Interval = 0.1),
-    __OpenModelica_commandLineOptions = "");
+    experiment(StartTime = 0, StopTime = 1400, Tolerance = 0.0001, Interval = 0.1));
 end MBEV;

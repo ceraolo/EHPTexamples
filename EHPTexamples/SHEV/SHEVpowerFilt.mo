@@ -37,13 +37,14 @@ equation
   connect(battery.n, drivePow.nv) annotation (
     Line(points = {{20.1, 24}, {24, 24}, {24, 14}, {52, 14}, {52, 26}, {52, 26}}, color = {0, 0, 255}));
   connect(drive.pin_p, drivePow.nv) annotation (
-    Line(points = {{68, 28.6667}, {61, 28.6667}, {61, 26}, {52, 26}}, color = {0, 0, 255}));
+    Line(points={{68,28.6667},{61,28.6667},{61,26},{52,26}},          color = {0, 0, 255}));
   connect(drivePow.nc, drive.pin_n) annotation (
-    Line(points = {{62, 36}, {66, 36}, {66, 37.5556}, {68, 37.5556}}, color = {0, 0, 255}));
+    Line(points={{62,36},{66,36},{66,37.5556},{68,37.5556}},          color = {0, 0, 255}));
   connect(gear.flange_a, drive.flange_a) annotation (
-    Line(points = {{-78, -39}, {-84, -39}, {-84, -14}, {98, -14}, {98, 33.1111}, {88, 33.1111}}));
+    Line(points={{-78,-39},{-84,-39},{-84,-14},{98,-14},{98,33.1111},{88,
+          33.1111}}));
   connect(drive.tauRef, driver.tauRef) annotation (
-    Line(points = {{66.6, 33.1111}, {66.6, 32}, {32, 32}, {32, 86}, {-73, 86}}, color = {0, 0, 127}));
+    Line(points={{66.6,33.1111},{66.6,32},{32,32},{32,86},{-73,86}},            color = {0, 0, 127}));
   connect(gsPow.nv, genset.pin_n) annotation (
     Line(points = {{-22, 24}, {-22, 24}, {-22, 14}, {-49.7, 14}, {-49.7, 14}}, color = {0, 0, 255}));
   connect(gsPow.pv, gsPow.pc) annotation (
@@ -84,7 +85,6 @@ equation
     Diagram(coordinateSystem(extent = {{-100, -80}, {100, 100}}, initialScale = 0.1), graphics={  Rectangle(lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-90, -28}, {94, -70}}), Rectangle(lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-90, 52}, {94, -10}}), Rectangle(lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-60, 96}, {94, 58}}), Text(lineColor = {255, 0, 0}, fillPattern = FillPattern.Solid, extent = {{68, 74}, {94, 66}}, textString = "EMS"), Text(lineColor = {255, 0, 0}, extent = {{-96, -60}, {-44, -68}}, textString = "Longitudinal Dynamics"), Text(lineColor = {255, 0, 0}, fillPattern = FillPattern.Solid, extent = {{12, 0}, {58, -8}}, textString = "PowerTrain")}),
     Icon(coordinateSystem(preserveAspectRatio = true, extent = {{-100, -100}, {100, 100}}), graphics),
     experiment(StopTime = 400, StartTime = 0, Tolerance = 1e-06, Interval = 0.2),
-    experimentSetupOutput(derivatives = false),
     Documentation(info = "<html>
 <p>This is a SHEV model which has an Energy Management System able to control the power flow with basic logic: requests the ICE to deliver the average load power.</p>
 </html>"));

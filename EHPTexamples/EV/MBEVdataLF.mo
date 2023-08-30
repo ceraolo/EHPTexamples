@@ -2,12 +2,14 @@ within EHPTexamples.EV;
 model MBEVdataLF "Simulates a very basic Electric Vehicle"
   import Modelica;
   extends Modelica.Icons.Example;
-  Modelica.Units.SI.Energy enBatDel;
-  Modelica.Units.SI.Energy enDTdel;
-  Modelica.Units.SI.Energy enP1del;
-  Modelica.Units.SI.Energy enBattLoss;
-  Modelica.Units.SI.Energy enBraking;
-  Modelica.Mechanics.Rotational.Components.IdealGear gear(ratio = data.ratio) annotation (
+  Modelica.Units.SI.Energy enBatDel(start=0, fixed=true);
+  Modelica.Units.SI.Energy enDTdel(start=0, fixed=true);
+  Modelica.Units.SI.Energy enP1del(start=0, fixed=true);
+  Modelica.Units.SI.Energy enBattLoss(start=0, fixed=true);
+  Modelica.Units.SI.Energy enBraking(start=0, fixed=true);
+
+  Modelica.Mechanics.Rotational.Components.IdealGear gear(ratio = data.ratio, flange_b(
+        phi(start=0, fixed=true))) annotation (
     Placement(visible = true, transformation(origin = {-20, 14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = "NEDC.txt", extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = data.kContr, yMax = 100000.0) annotation (
     Placement(visible = true, transformation(extent = {{-116, -10}, {-96, 10}}, rotation = 0)));
@@ -15,14 +17,16 @@ model MBEVdataLF "Simulates a very basic Electric Vehicle"
     Placement(visible = true, transformation(extent = {{-4, 4}, {16, 24}}, rotation = 0)));
   EHPTlib.MapBased.OneFlange2LF eleDrive(J = data.J, A = 0.001, bT = 0.05, bW = 0.02, bP = 0.05, powMax = data.MaxPower, tauMax = data.MaxTorque, uDcNom = 400, wMax = data.MaxOmega) "Electric Drive" annotation (
     Placement(visible = true, transformation(extent = {{-74, 6}, {-54, 24}}, rotation = 0)));
-  EHPTlib.SupportModels.Miscellaneous.Batt1 batt1(SOCInit = 0.7, QCellNom = 100 * 3600, ns = 100) annotation (
+  EHPTlib.SupportModels.Miscellaneous.Batt1 batt1(SOCInit = 0.7,
+  QCellNom = 100 * 3600, ns = 100,  C1(v(start=0, fixed=true))) annotation (
     Placement(transformation(extent = {{-112, 34}, {-92, 54}})));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (
     Placement(visible = true, transformation(extent = {{-84, -20}, {-64, 0}}, rotation = 0)));
   Modelica.Mechanics.Translational.Sensors.PowerSensor mP1 annotation (
     Placement(visible = true, transformation(origin={32,14},    extent={{-8,-8},
             {8,8}},                                                                          rotation = 0)));
-  Modelica.Mechanics.Translational.Components.Mass mass(m = data.m) annotation (
+  Modelica.Mechanics.Translational.Components.Mass mass(m = data.m, v(fixed=
+          true))                                                    annotation (
     Placement(visible = true, transformation(extent = {{56, 4}, {76, 24}}, rotation = 0)));
   Modelica.Mechanics.Translational.Sensors.PowerSensor mP2 annotation (
     Placement(visible = true, transformation(origin = {98, 4}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));

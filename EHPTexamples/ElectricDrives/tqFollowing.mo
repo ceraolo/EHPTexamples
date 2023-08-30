@@ -19,7 +19,8 @@ model tqFollowing "Compares U/f=cost and mains start-ups"
     Placement(visible = true, transformation(origin = {61, -25}, extent = {{-7, -7}, {7, 7}}, rotation = 270)));
   Modelica.Electrical.Polyphase.Sensors.CurrentSensor iUp annotation (
     Placement(visible = true, transformation(origin = {-6, 40}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
-  Modelica.Mechanics.Rotational.Components.Inertia inertia(J = 0.5) annotation (
+  Modelica.Mechanics.Rotational.Components.Inertia inertia(J = 0.5, w(fixed=
+          true, start=0))                                           annotation (
     Placement(visible = true, transformation(extent = {{34, -16}, {54, 4}}, rotation = 0)));
   EHPTlib.ElectricDrives.ASMArelated.ControlLogic logic(Rr = aimc.Rr, Rs = aimc.Rs, wmMax = 314.16 / 2, uBase = 100 * sqrt(3), Lstray = aimc.Lssigma + aimc.Lrsigma, pp = aimc.p) annotation (
     Placement(visible = true, transformation(extent = {{-18, -54}, {-38, -34}}, rotation = 0)));
@@ -78,7 +79,10 @@ equation
 </body></html>"),
     experimentSetupOutput,
     Icon(coordinateSystem(preserveAspectRatio = true, extent = {{-100, -80}, {100, 60}})),
-    Diagram(coordinateSystem(extent = {{-100, -80}, {100, 60}}, preserveAspectRatio = false), graphics={  Rectangle(origin = {-57, 26}, lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-15, 10}, {15, -48}}), Text(origin = {-30, -1}, extent = {{-8, 3}, {8, -3}}, textString = "inverter")}),
+    Diagram(coordinateSystem(extent = {{-100, -80}, {100, 60}}, preserveAspectRatio = false),
+      graphics={  Rectangle(origin = {-57, 26}, lineColor = {255, 0, 0},
+      pattern = LinePattern.Dash, extent = {{-15, 10}, {15, -48}}),
+      Text(origin={-30,-9},    extent = {{-8, 3}, {8, -3}}, textString = "simulates\ninverter")}),
     experiment(StartTime = 0, StopTime = 12, Tolerance = 0.0001, Interval = 0.0024),
     __OpenModelica_commandLineOptions = "");
 end tqFollowing;
