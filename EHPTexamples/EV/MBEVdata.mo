@@ -10,7 +10,7 @@ model MBEVdata "Simulates a very basic Electric Vehicle"
 
   Modelica.Mechanics.Rotational.Components.IdealGear gear(ratio = data.ratio) annotation (
     Placement(visible = true, transformation(origin = {-20, 14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = "NEDC.txt", extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = data.kContr, yMax = 100000.0) annotation (
+  EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/NEDC.txt"), extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = data.kContr, yMax = 100000.0) annotation (
     Placement(visible = true, transformation(extent = {{-116, -10}, {-96, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.5715) annotation (
     Placement(visible = true, transformation(extent = {{-4, 4}, {16, 24}}, rotation = 0)));

@@ -38,7 +38,7 @@ model PSecu1 "Full Power Split Device power train using Map-Based components"
     Placement(visible = true, transformation(origin = {10, 26}, extent = {{10, 10}, {-10, -10}}, rotation = 270)));
   EHPTlib.MapBased.OneFlangeConn gen annotation (
     Placement(visible = true, transformation(extent = {{-38, 10}, {-58, 30}}, rotation = 0)));
-  EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = "NEDC.txt", k = 1, yMax = 1.8) annotation (
+  EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/NEDC.txt"), k = 1, yMax = 1.8) annotation (
     Placement(visible = true, transformation(extent = {{-60, -50}, {-40, -30}}, rotation = 0)));
 equation
   connect(ECU.tauRef, driver.tauRef) annotation (
