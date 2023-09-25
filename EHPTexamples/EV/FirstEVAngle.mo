@@ -6,7 +6,7 @@ model FirstEVAngle "Simulates a very basic Electric Vehicle"
     Placement(visible = true, transformation(origin = {-14, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Sources.Torque torque annotation (
     Placement(visible = true, transformation(extent = {{-82, 10}, {-62, 30}}, rotation = 0)));
-  EHPTlib.SupportModels.Miscellaneous.PropDriver driver(extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = 1000, yMax = 100000.0, 
+  EHPTlib.SupportModels.Miscellaneous.PropDriver driver(extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = 1000, yMax = 100000.0,
     CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/TestAngle.txt")) annotation (
     Placement(visible = true, transformation(extent = {{-118, 10}, {-98, 30}}, rotation = 0)));
   Modelica.Mechanics.Translational.Components.Mass mass(m = 1300) annotation (
