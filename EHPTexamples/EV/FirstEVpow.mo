@@ -10,7 +10,7 @@ model FirstEVpow "Simulates a very basic Electric Vehicle"
     Placement(visible = true, transformation(origin = {-8, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Sources.Torque torque annotation (
     Placement(visible = true, transformation(extent = {{-76, 10}, {-56, 30}}, rotation = 0)));
-  EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = "Sort1.txt", extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = 1000, yMax = 100000.0) annotation (
+  EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/Sort1.txt"), extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = 1000, yMax = 100000.0) annotation (
     Placement(visible = true, transformation(extent = {{-112, 8}, {-92, 28}}, rotation = 0)));
   Modelica.Mechanics.Translational.Components.Mass mass(m = 1300) annotation (
     Placement(visible = true, transformation(extent = {{54, 10}, {74, 30}}, rotation = 0)));
