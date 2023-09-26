@@ -20,7 +20,9 @@ model SHEVpowerFiltSoc "Ice, Generator, DriveTrain, all map-based"
     Placement(transformation(extent = {{-8, -8}, {8, 8}}, rotation = 270, origin = {26, -74})));
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/Sort1.txt"), extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = 200.0, yMax = 2e3) annotation (
     Placement(visible = true, transformation(extent = {{-100, 90}, {-80, 110}}, rotation = 0)));
-  EHPTlib.MapBased.Genset genset(gsRatio = 1, mapsFileName = "SHEVmaps.txt", maxGenW = 300, maxPow = 45000, maxTau = 500, wIceStart = 300) annotation (
+  EHPTlib.MapBased.Genset genset(gsRatio = 1,
+    mapsFileName=Modelica.Utilities.Files.loadResource(
+        "modelica://EHPTexamples/Resources/SHEVmaps.txt"),                   maxGenW = 300, maxPow = 45000, maxTau = 500, wIceStart = 300) annotation (
     Placement(transformation(extent = {{-80, -34}, {-50, -4}})));
   EHPTlib.SupportModels.Miscellaneous.Batt1 battery(ICellMax = 500, QCellNom = 25 * 3600, R0Cell = 0.35E-3, efficiency = 0.9, iCellEfficiency = 200, ns = 200) annotation (
     Placement(transformation(extent = {{0, -24}, {20, -4}})));
@@ -104,7 +106,7 @@ equation
     Line(points = {{40, -19}, {40, -18}, {34, -18}, {34, 26}, {60, 26}, {60, 86}, {35.6, 86}}, color = {0, 0, 127}));
   annotation (
     Diagram(coordinateSystem(extent = {{-100, -100}, {100, 120}}, initialScale = 0.1), graphics={  Rectangle(lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-90, -48}, {94, -94}}), Rectangle(lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-90, 10}, {92, -38}}), Rectangle(lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-70, 116}, {94, 30}}), Text(lineColor = {255, 0, 0}, fillPattern = FillPattern.Solid, extent = {{50, 112}, {76, 104}}, textString = "EMS"), Text(origin = {16, -4}, lineColor = {255, 0, 0}, extent = {{-96, -80}, {-44, -88}}, textString = "Longitudinal Dynamics"), Text(origin = {-9.3846, 46}, lineColor = {255, 0, 0}, extent = {{-88.6154, -40}, {-40.6154, -44}}, textString = "Power Train")}),
-    Icon(coordinateSystem(preserveAspectRatio = true, extent = {{-100, -100}, {100, 120}}, initialScale = 0.1), graphics),
+    Icon(coordinateSystem(preserveAspectRatio = true, extent = {{-100, -100}, {100, 100}}, initialScale = 0.1), graphics),
     experiment(StopTime = 2000, StartTime = 0, Tolerance = 1e-06, Interval = 4),
     Documentation(info = "<html>
 <p>This is a SHEV model which has an Energy Management System able to control the power flow with:</p>

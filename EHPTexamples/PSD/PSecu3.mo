@@ -22,7 +22,9 @@ model PSecu3 "Full Power Split Device power train using Map-Based components"
     Placement(transformation(extent = {{54, 42}, {74, 62}})));
   EHPTlib.SupportModels.Miscellaneous.DragForce dragForce(Cx = 0.26, S = 2.2, fc = 0.014, m = mass.m, rho = 1.226) annotation (
     Placement(transformation(extent = {{-9, -9}, {9, 9}}, rotation = 90, origin = {89, 29})));
-  EHPTlib.MapBased.IceConnPOO ice(mapsFileName = "PSDmaps.txt", wIceStart = wIceStart,
+  EHPTlib.MapBased.IceConnPOO ice(
+    mapsFileName=Modelica.Utilities.Files.loadResource(
+        "modelica://EHPTexamples/Resources/PSDmaps.txt"),       wIceStart = wIceStart,
     flange_a(phi(start=0, fixed=true)))                                                annotation (
     Placement(transformation(extent = {{-98, 46}, {-78, 66}})));
   EHPTlib.SupportModels.Miscellaneous.Batt1Conn bat(ECellMin = 0.9, ECellMax = 1.45, R0Cell = 0.0003, ns = 168, QCellNom = 2 * 6.5 * 3600.0, SOCInit = 0.6, ICellMax = 1e5, iCellEfficiency = 15 * 6.5) annotation (
