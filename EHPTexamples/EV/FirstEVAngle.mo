@@ -17,7 +17,8 @@ model FirstEVAngle "Simulates a very basic Electric Vehicle"
     Placement(visible = true, transformation(extent = {{4, 10}, {24, 30}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Components.Inertia inertia(J = 5) annotation (
     Placement(visible = true, transformation(extent = {{-54, 10}, {-34, 30}}, rotation = 0)));
-  EHPTlib.SupportModels.Miscellaneous.DragForceAngle dragF(Cx = 0.65, S = 6.0, fc = 0.013, m = mass.m, rho = 1.226, DataFileName = "Angle1.txt") annotation (
+  EHPTlib.SupportModels.Miscellaneous.DragForceAngle dragF(Cx = 0.65, S = 6.0, fc = 0.013, m = mass.m, rho = 1.226, 
+    DataFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/Angle1.txt")) annotation (
     Placement(visible = true, transformation(origin = {82, -24}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
 equation
   connect(velSens.flange, mass.flange_b) annotation (

@@ -35,7 +35,7 @@ model PSecu2 "Full Power Split Device power train using Map-Based components"
     Placement(visible = true, transformation(origin = {38, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (
     Placement(visible = true, transformation(origin = {10, 26}, extent = {{10, 10}, {-10, -10}}, rotation = 270)));
-  EHPTlib.MapBased.OneFlangeConn gen(mapsOnFile = true, mapsFileName = "PSDmaps.txt", effTableName = "genEffTable") annotation (
+  EHPTlib.MapBased.OneFlangeConn gen(mapsOnFile = true, mapsFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/PSDmaps.txt"), effTableName = "genEffTable") annotation (
     Placement(visible = true, transformation(extent = {{-38, 10}, {-58, 30}}, rotation = 0)));
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/NEDC.txt"), k = 1, yMax = 1.8) annotation (
     Placement(visible = true, transformation(extent = {{-60, -50}, {-40, -30}}, rotation = 0)));
