@@ -13,7 +13,7 @@ model MBEV "Simulates a very basic Electric Vehicle"
     Placement(visible = true, transformation(extent = {{-116, -10}, {-96, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.5715) annotation (
     Placement(visible = true, transformation(extent = {{-4, 4}, {16, 24}}, rotation = 0)));
-  EHPTlib.MapBased.OneFlange eleDrive(J = 0.25, effTableName = "effTable", mapsFileName = "EVmaps.txt", mapsOnFile = true, tauMax = 150, wMax = 500) "Electric Drive" annotation (
+  EHPTlib.MapBased.OneFlange eleDrive(J = 0.25, effTableName = "effTable", mapsFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/EVmaps.txt"), mapsOnFile = true, tauMax = 150, wMax = 500) "Electric Drive" annotation (
     Placement(visible = true, transformation(extent = {{-74, 6}, {-54, 24}}, rotation = 0)));
   EHPTlib.SupportModels.Miscellaneous.Batt1 batt1(SOCInit = 0.7, QCellNom = 100 * 3600, ns = 100,
     C1(v(start=0, fixed=true)))                                                                   annotation (

@@ -30,7 +30,7 @@ model PSecu1 "Full Power Split Device power train using Map-Based components"
     Placement(visible = true, transformation(extent = {{2, -40}, {28, -16}}, rotation = 0), iconTransformation(extent = {{4, -52}, {30, -28}}, rotation = 0)));
   EHPTlib.MapBased.ECUs.Ecu1 ECU(genLoopGain = 1.0) annotation (
     Placement(visible = true, transformation(origin = {-10, -41}, extent = {{-10, -9}, {10, 9}}, rotation = 0)));
-  EHPTlib.MapBased.TwoFlangeConn mot(effTableName = "motEffTable", mapsFileName = "PSDmaps.txt", mapsOnFile = true) annotation (
+  EHPTlib.MapBased.TwoFlangeConn mot(effTableName = "motEffTable", mapsFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/PSDmaps.txt"), mapsOnFile = true) annotation (
     Placement(visible = true, transformation(extent = {{-28, 62}, {-8, 42}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.31) annotation (
     Placement(visible = true, transformation(origin = {38, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
