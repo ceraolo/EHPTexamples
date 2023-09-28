@@ -23,7 +23,8 @@ model PSecu2PA "Full Power Split Device power train using Map-Based components"
   EHPTlib.MapBased.IceConnP ice(wIceStart = wIceStart, mapsFileName = "PSDmaps.txt",
     flange_a(phi(start=0, fixed=true)))                                              annotation (
     Placement(transformation(extent = {{-98, 46}, {-78, 66}})));
-  EHPTlib.SupportModels.Miscellaneous.Batt1Conn bat(ECellMin = 0.9, ECellMax = 1.45, R0Cell = 0.0003, SOCInit = 0.6, ICellMax = 1e5, iCellEfficiency = 15 * 6.5, ns = 100, QCellNom = 2 * 3600.0) annotation (
+  EHPTlib.SupportModels.Miscellaneous.Batt1Conn bat(ECellMin = 0.9, ECellMax = 1.45, R0Cell = 0.0003, SOCInit = 0.6, ICellMax = 1e5, iCellEfficiency = 15 * 6.5, ns = 100,
+    QCellNom=5*3600.0)                                                                                                                                                                            annotation (
     Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-16, 0})));
   EHPTlib.SupportModels.ConnectorRelated.Conn d annotation (
     Placement(visible = true, transformation(extent = {{2, -40}, {28, -16}}, rotation = 0), iconTransformation(extent = {{4, -52}, {30, -28}}, rotation = 0)));
