@@ -60,7 +60,7 @@ equation
   connect(cutNeg.y, tqToForce.u) annotation (
     Line(points = {{-7.4, -20}, {-2, -20}, {-2, -20}, {-1.2, -20}}, color = {0, 0, 127}));
   connect(cutNeg.u, add.y) annotation (
-    Line(points = {{-21.2, -20}, {-30, -20}, {-30, -20}, {-29.4, -20}}, color = {0, 0, 127}));
+    Line(points = {{-21.2, -20}, {-29, -20}}, color = {0, 0, 127}));
   connect(brake.flange,mP1. flange_b) annotation (
     Line(points = {{42, -20}, {46, -20}, {46, 14}, {38, 14}}, color = {0, 127, 0}));
   connect(velSens.flange,mP2. flange_a) annotation (
@@ -83,11 +83,11 @@ equation
   der(enBattLoss) = batt1.powerLoss;
   der(enBraking) = if mP1.power > 0 then 0 else -mP1.power;
   connect(add.u2, driver.tauRef) annotation (
-    Line(points = {{-43.2, -23.6}, {-86, -23.6}, {-86, 0}, {-95, 0}}, color = {0, 0, 127}));
+    Line(points = {{-43, -24}, {-86, -24}, {-86, 0}, {-95, 0}}, color = {0, 0, 127}));
   connect(edTau.flange_b, gear.flange_a) annotation (
     Line(points = {{-34, 14}, {-30, 14}, {-30, 14}}, color = {0, 0, 0}));
   connect(add.u1, edTau.tau) annotation (
-    Line(points = {{-43.2, -16.4}, {-48.4, -16.4}, {-48.4, 5.2}}, color = {0, 0, 127}));
+    Line(points = {{-43, -16}, {-45, 5.2}, {-48.4, 5.2}}, color = {0, 0, 127}));
   annotation (
     experimentSetupOutput(derivatives = false),
     Documentation(info = "<html>
