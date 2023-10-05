@@ -91,11 +91,9 @@ equation
   connect(add.u1, edTau.tau) annotation (
     Line(points = {{-43.2, -16.4}, {-48.4, -16.4}, {-48.4, 5.2}}, color = {0, 0, 127}));
   annotation (
-    experimentSetupOutput(derivatives = false),
     Documentation(info = "<html>
     <p>Simple map-based EV model with battery.</p>
     </html>"),
-    Commands,
     Diagram(coordinateSystem(extent = {{-120, -60}, {120, 60}}, preserveAspectRatio = false)),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
     experiment(StartTime = 0, StopTime = 1400, Tolerance = 0.0001, Interval = 0.1),
