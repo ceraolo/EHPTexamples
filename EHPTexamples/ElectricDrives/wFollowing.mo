@@ -76,7 +76,6 @@ equation
   connect(iUp.plug_p, pUp.nc) annotation (
     Line(points = {{-14, 40}, {-20, 40}, {-20, 23}}, color = {0, 0, 255}));
   annotation (
-    experimentSetupOutput,
     Documentation(info = "<html>
 <p>This system simulates variable-frequency start-up of an asyncronous motor.</p>
 <p>Two different sources for the machine re compared.</p>
@@ -92,7 +91,6 @@ equation
 </ul></p>
 <p>When the final speed is reached, the feeding frequenccy and voltage are kept constant (no flux weaking simulated)</p>
 </html>"),
-    experimentSetupOutput,
     Icon(coordinateSystem(preserveAspectRatio = true, extent = {{-100, -100}, {100, 100}})),
     Diagram(coordinateSystem(extent = {{-100, -80}, {120, 60}}, preserveAspectRatio = false),
       graphics={  Rectangle(origin = {-57, 26}, lineColor = {255, 0, 0},

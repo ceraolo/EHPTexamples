@@ -47,11 +47,9 @@ equation
   connect(wheel.flangeT,mP1. flange_a) annotation (
     Line(points = {{30, 20}, {34, 20}, {36, 20}}, color = {0, 127, 0}));
   annotation (
-    experimentSetupOutput(derivatives = false),
     Documentation(info = "<html>
 <p>Very basic introductory EV model with power measurements.</p>
 </html>"),
-    Commands,
     Diagram(coordinateSystem(extent = {{-120, -40}, {120, 40}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2}), graphics={  Rectangle(extent = {{-84, 36}, {-24, 4}}, lineColor = {28, 108, 200}, pattern = LinePattern.Dash), Text(extent = {{-82, 2}, {-26, -4}}, lineColor = {28, 108, 200}, pattern = LinePattern.Dash, textString = "electric drive")}),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
     experiment(StartTime = 0, StopTime = 200, Tolerance = 0.0001, Interval = 0.1));

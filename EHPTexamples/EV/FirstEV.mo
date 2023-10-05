@@ -41,11 +41,9 @@ equation
   connect(gear.flange_b, wheel.flangeR) annotation (
     Line(points = {{-4, 20}, {-4, 20}, {4, 20}}));
   annotation (
-    experimentSetupOutput(derivatives = false),
     Documentation(info = "<html>
 <p>Very basic introductory EV model</p>
 </html>"),
-    Commands,
     Diagram(coordinateSystem(extent = {{-120, -40}, {100, 40}}, preserveAspectRatio = false),
       graphics={  Rectangle(origin = {-6, 0}, lineColor = {28, 108, 200},
       pattern = LinePattern.Dash, extent = {{-84, 36}, {-24, 4}}),

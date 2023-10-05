@@ -38,10 +38,8 @@ equation
   connect(dragF.flange, mass.flange_b) annotation (
     Line(points = {{82, -14}, {82, 20}, {54, 20}}, color = {0, 127, 0}));
   annotation (
-    experimentSetupOutput(derivatives = false),
     Documentation(info = "<html><head></head><body><p>Basic EV model with resistance to movement which includes slope.</p><p>Note that the model is only partially working since it is not able to stop the vehicle with negative angles when zero speed is needed.&nbsp;</p><p>Check the variable dragF.locked when the driver cycle is Sort1.txt: for t=80-100s the requested speed is zero, but the variable dragF.locked remains false.</p><p>Fixing this requires implementing a totally different driver's model, since the driver in these cases must explicitly push on the brake pedal, often requesting a strong negative torque. This enhanced driver model is out of the scope of the EHPTlib library.</p>
 </body></html>"),
-    Commands,
     Diagram(coordinateSystem(extent = {{-120, -40}, {100, 40}}, preserveAspectRatio = false), graphics={  Rectangle(origin = {-6, 0}, lineColor = {28, 108, 200}, pattern = LinePattern.Dash, extent = {{-84, 36}, {-24, 4}}), Text(origin = {-6, 0}, lineColor = {28, 108, 200}, pattern = LinePattern.Dash, extent = {{-82, 2}, {-26, -4}}, textString = "electric drive")}),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
     experiment(StopTime = 200, Interval = 0.1),

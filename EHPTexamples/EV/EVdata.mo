@@ -45,10 +45,8 @@ equation
   connect(torque.tau, driver.tauRef) annotation (
     Line(points = {{-84, 20}, {-97, 20}}, color = {0, 0, 127}));
   annotation (
-    experimentSetupOutput(derivatives = false),
     Documentation(info = "<html><head></head><body><p>Very basic introductory EV model, but with use of \"data\" record for car's parameters.</p>
 </body></html>"),
-    Commands,
     Diagram(coordinateSystem(extent = {{-120, -40}, {100, 60}}, preserveAspectRatio = false),
       graphics={  Rectangle(origin = {-6, 0}, lineColor = {28, 108, 200},
       pattern = LinePattern.Dash, extent = {{-84, 36}, {-24, 4}}), Text(origin = {-6, 0}, lineColor = {28, 108, 200}, pattern = LinePattern.Dash, extent = {{-82, 2}, {-26, -4}}, textString = "electric drive")}),
