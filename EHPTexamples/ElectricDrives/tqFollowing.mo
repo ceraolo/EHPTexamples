@@ -62,7 +62,6 @@ equation
   connect(logic.Wm, speedSensor.w) annotation (
     Line(points = {{-28.1, -55.3}, {-28.1, -62.3}, {61, -62.3}, {61, -32.7}}, color = {0, 0, 127}));
   annotation (
-    experimentSetupOutput,
     Documentation(info = "<html><head></head><body><p><font size=\"5\">This system simulates variable-frequency start-up of an asyncronous motor.</font></p>
 <p><font size=\"5\">Two different sources for the machine are compared.</font></p>
 <p><font size=\"5\">The motor supply is constituted by a three-phase system of quasi-sinusoidal shapes, created according to the following equations:</font></p>
@@ -77,7 +76,6 @@ equation
 </ul><p></p>
 <p><font size=\"5\">When the final speed is reached, the feeding frequency and voltage are kept constant (no flux weaking simulated)</font></p>
 </body></html>"),
-    experimentSetupOutput,
     Icon(coordinateSystem(preserveAspectRatio = true, extent = {{-100, -80}, {100, 60}})),
     Diagram(coordinateSystem(extent = {{-100, -80}, {100, 60}}, preserveAspectRatio = false),
       graphics={  Rectangle(origin = {-57, 26}, lineColor = {255, 0, 0},
