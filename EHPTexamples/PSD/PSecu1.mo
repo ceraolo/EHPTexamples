@@ -46,7 +46,7 @@ equation
   connect(carVel.v, driver.V) annotation (
     Line(points = {{78, -23}, {78, -58}, {-50, -58}, {-50, -51.2}}, color = {0, 0, 127}));
   connect(mot.conn1, ECU.conn1) annotation (
-    Line(points = {{-27.2, 59.8}, {-27.2, 72}, {50, 72}, {50, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+    Line(points={{-26.8,59.8},{-26.8,72},{50,72},{50,-20},{-10,-20},{-10,-32.18}},              color = {255, 204, 51}, thickness = 0.5));
   connect(gen.pin_p, bat.p) annotation (
     Line(points = {{-38, 24}, {-24, 24}, {-24, 10}, {-23.75, 10}}, color = {0, 0, 255}));
   connect(gen.pin_n, bat.n) annotation (
@@ -54,7 +54,7 @@ equation
   connect(gen.flange_a, PSD.sun) annotation (
     Line(points = {{-58, 20}, {-70, 20}, {-70, 52}, {-60, 52}}));
   connect(gen.conn, ECU.conn1) annotation (
-    Line(points = {{-58, 12.2}, {-58, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+    Line(points={{-57,12.2},{-57,-20},{-10,-20},{-10,-32.18}},          color = {255, 204, 51}, thickness = 0.5));
   connect(ground.p, bat.n) annotation (
     Line(points = {{0, 26}, {-8.5, 26}, {-8.5, 10.1}}, color = {0, 0, 255}));
   connect(wheel.flangeT, mass.flange_a) annotation (
@@ -66,9 +66,9 @@ equation
   connect(idealGear.flange_a, mot.flange_b) annotation (
     Line(points = {{2, 52}, {-4, 52}, {-4, 52.2}, {-8, 52.2}}));
   connect(mot.pin_p, bat.p) annotation (
-    Line(points = {{-22, 42.2}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
+    Line(points={{-22,43.8},{-22,10},{-23.75,10}},        color = {0, 0, 255}));
   connect(mot.pin_n, bat.n) annotation (
-    Line(points = {{-14, 42}, {-14, 10.1}, {-8.5, 10.1}}, color = {0, 0, 255}));
+    Line(points={{-14,43.8},{-14,10.1},{-8.5,10.1}},      color = {0, 0, 255}));
   connect(bat.conn, ECU.conn1) annotation (
     Line(points = {{-15.75, -10}, {-16, -10}, {-16, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
   connect(ice.conn, ECU.conn1) annotation (
