@@ -56,7 +56,7 @@ equation
   connect(drivePow.nc, drive.pin_n) annotation (
     Line(points={{50,16},{64,16},{64,11.5556},{64,11.5556}},          color = {0, 0, 255}));
   connect(driver.tauRef, drive.tauRef) annotation (
-    Line(points = {{75, 60}, {57, 60}, {57, 4.5}, {62.6, 4.5}, {62.6, 7.11111}}, color = {0, 0, 127}));
+    Line(points={{75,60},{57,60},{57,4.5},{63.8,4.5},{63.8,7.11111}},            color = {0, 0, 127}));
   connect(ground1.p, drive.pin_p) annotation (
     Line(points = {{22, -4}, {22, 2.66667}, {64, 2.66667}}, color = {0, 0, 255}));
   connect(gsPow.nv, drive.pin_p) annotation (
@@ -72,7 +72,7 @@ equation
   connect(mass.flange_a, powProp.flange_b) annotation (
     Line(points = {{-2, -41}, {-12, -41}}, color = {0, 127, 0}));
   connect(battery.SOC, ems.soc) annotation (
-    Line(points = {{-2, 37}, {-2, 52}, {-8, 52}}, color = {0, 0, 127}));
+    Line(points={{2,37},{2,52},{-8,52}},          color = {0, 0, 127}));
   connect(gsPow.pv, gsPow.pc) annotation (
     Line(points = {{-26, 20}, {-36, 20}, {-36, 10}}, color = {0, 0, 255}));
   connect(powDrag.flange_b, dragForce.flange) annotation (

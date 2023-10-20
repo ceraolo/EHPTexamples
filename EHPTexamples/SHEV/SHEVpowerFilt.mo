@@ -44,7 +44,7 @@ equation
     Line(points={{-78,-39},{-84,-39},{-84,-14},{98,-14},{98,33.1111},{88,
           33.1111}}));
   connect(drive.tauRef, driver.tauRef) annotation (
-    Line(points={{66.6,33.1111},{66.6,32},{32,32},{32,86},{-73,86}},            color = {0, 0, 127}));
+    Line(points={{67.8,33.1111},{67.8,32},{32,32},{32,86},{-73,86}},            color = {0, 0, 127}));
   connect(gsPow.nv, genset.pin_n) annotation (
     Line(points = {{-22, 24}, {-22, 24}, {-22, 14}, {-49.7, 14}, {-49.7, 14}}, color = {0, 0, 255}));
   connect(gsPow.pv, gsPow.pc) annotation (

@@ -29,7 +29,7 @@ model PSecu2PA "Full Power Split Device power train using Map-Based components"
   EHPTlib.SupportModels.ConnectorRelated.Conn d annotation (
     Placement(visible = true, transformation(extent = {{2, -40}, {28, -16}}, rotation = 0), iconTransformation(extent = {{4, -52}, {30, -28}}, rotation = 0)));
   EHPTlib.MapBased.ECUs.Ecu2 ECU(genLoopGain = 1.0, socLoopGain = 2e4, powFiltT = 10) annotation (
-    Placement(visible = true, transformation(origin = {-10, -41}, extent = {{-10, -9}, {10, 9}}, rotation = 0)));
+    Placement(visible = true, transformation(origin={-12,-41},    extent = {{-10, -9}, {10, 9}}, rotation = 0)));
   EHPTlib.MapBased.TwoFlangeConn mot annotation (
     Placement(visible = true, transformation(extent = {{-28, 62}, {-8, 42}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.31) annotation (
@@ -48,19 +48,19 @@ equation
   connect(wheel.flangeT, mass.flange_a) annotation (
     Line(points = {{48, 52}, {54, 52}}, color = {0, 127, 0}));
   connect(ECU.tauReference, driver.tauRef) annotation (
-    Line(points = {{-22, -41}, {-29, -41}, {-29, -40}, {-39, -40}}, color = {0, 0, 127}));
+    Line(points={{-24,-41},{-29,-41},{-29,-40},{-39,-40}},          color = {0, 0, 127}));
   connect(carVel.v, driver.V) annotation (
     Line(points = {{78, -23}, {78, -58}, {-50, -58}, {-50, -51.2}}, color = {0, 0, 127}));
   connect(mot.conn1, ECU.conn1) annotation (
-    Line(points = {{-27.2, 59.8}, {-27.2, 72}, {50, 72}, {50, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+    Line(points={{-26.8,59.8},{-26.8,72},{50,72},{50,-20},{-12,-20},{-12,-32.18}},              color = {255, 204, 51}, thickness = 0.5));
   connect(gen.pin_n, bat.n) annotation (
-    Line(points = {{-38, 16}, {-8.5, 16}, {-8.5, 10.1}}, color = {0, 0, 255}));
+    Line(points={{-38,16},{-10,16},{-10,10.1}},          color = {0, 0, 255}));
   connect(gen.flange_a, PSD.sun) annotation (
     Line(points = {{-58, 20}, {-58, 20}, {-70, 20}, {-70, 52}, {-60, 52}}));
   connect(gen.conn, ECU.conn1) annotation (
-    Line(points = {{-58, 12.2}, {-58, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+    Line(points={{-57,12.2},{-57,-20},{-12,-20},{-12,-32.18}},          color = {255, 204, 51}, thickness = 0.5));
   connect(ground.p, bat.n) annotation (
-    Line(points = {{0, 26}, {-8.5, 26}, {-8.5, 10.1}}, color = {0, 0, 255}));
+    Line(points={{0,26},{-10,26},{-10,10.1}},          color = {0, 0, 255}));
   connect(wheel.flangeR, idealGear.flange_b) annotation (
     Line(points = {{28, 52}, {22, 52}}));
   connect(PSD.ring, mot.flange_a) annotation (
@@ -68,15 +68,15 @@ equation
   connect(idealGear.flange_a, mot.flange_b) annotation (
     Line(points = {{2, 52}, {-4, 52}, {-4, 52.2}, {-8, 52.2}}));
   connect(mot.pin_p, bat.p) annotation (
-    Line(points = {{-22, 42.2}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
+    Line(points={{-22,43.8},{-22,10},{-22,10}},           color = {0, 0, 255}));
   connect(mot.pin_n, bat.n) annotation (
-    Line(points = {{-14, 42}, {-14, 10.1}, {-8.5, 10.1}}, color = {0, 0, 255}));
+    Line(points={{-14,43.8},{-14,10.1},{-10,10.1}},       color = {0, 0, 255}));
   connect(bat.conn, ECU.conn1) annotation (
-    Line(points = {{-15.75, -10}, {-16, -10}, {-16, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+    Line(points={{-12,-10.2},{-12,-32.18}},                                           color = {255, 204, 51}, thickness = 0.5));
   connect(ice.conn, ECU.conn1) annotation (
-    Line(points = {{-88, 45.8}, {-88, 45.8}, {-88, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+    Line(points={{-88,45.8},{-88,-20},{-12,-20},{-12,-32.18}},                       color = {255, 204, 51}, thickness = 0.5));
   connect(ECU.conn1, d) annotation (
-    Line(points = {{-10, -32.18}, {-10, -28}, {15, -28}}, color = {255, 204, 51}, thickness = 0.5));
+    Line(points={{-12,-32.18},{-12,-28},{15,-28}},        color = {255, 204, 51}, thickness = 0.5));
   der(EbatDel) = (bat.p.v - bat.n.v) * bat.n.i;
   der(EgenDelM) = gen.pin_p.i * (gen.pin_p.v - gen.pin_n.v) + gen.flange_a.tau * der(gen.flange_a.phi);
   der(Eroad) = dragForce.flange.f * der(dragForce.flange.s);
@@ -86,7 +86,7 @@ equation
   connect(PSD.carrier, ice.flange_a) annotation (
     Line(points = {{-60, 56}, {-78, 56}}, color = {0, 0, 0}, smooth = Smooth.None));
   connect(gen.pin_p, bat.p) annotation (
-    Line(points = {{-38, 24}, {-38, 34}, {-22, 34}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
+    Line(points={{-38,24},{-38,34},{-22,34},{-22,10},{-22,10}},               color = {0, 0, 255}));
   annotation (
     __Dymola_experimentSetupOutput,
     Documentation(info = "<html>

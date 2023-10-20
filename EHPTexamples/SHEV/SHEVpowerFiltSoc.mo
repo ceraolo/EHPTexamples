@@ -63,7 +63,7 @@ equation
     Line(points={{-78,-60},{-84,-60},{-84,-42},{96,-42},{96,-18.8889},{86,
           -18.8889}}));
   connect(drive.tauRef, driver.tauRef) annotation (
-    Line(points={{64.6,-18.8889},{64.6,16},{64,16},{64,24},{82,24},{82,100},{
+    Line(points={{65.8,-18.8889},{65.8,16},{64,16},{64,24},{82,24},{82,100},{
           -79,100}},                                                                                   color = {0, 0, 127}));
   connect(battery.n, drive.pin_p) annotation (
     Line(points={{20.1,-20},{24,-20},{24,-28},{32,-28},{32,-23.3333},{66,
@@ -97,7 +97,7 @@ equation
   connect(gsPow.pv, gsPow.pc) annotation (
     Line(points = {{-22, 0}, {-32, 0}, {-32, -10}}, color = {0, 0, 255}));
   connect(battery.SOC, fbSOC.u2) annotation (
-    Line(points = {{-1, -14}, {-4, -14}, {-4, 40}, {10, 40}}, color = {0, 0, 127}));
+    Line(points={{-1,-10},{-4,-10},{-4,40},{10,40}},          color = {0, 0, 127}));
   connect(fbSOC.u1, socRef_.y) annotation (
     Line(points = {{18, 48}, {27, 48}}, color = {0, 0, 127}));
   connect(socErrToPow.u, fbSOC.y) annotation (
