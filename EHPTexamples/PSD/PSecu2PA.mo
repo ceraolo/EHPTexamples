@@ -20,7 +20,7 @@ model PSecu2PA "Full Power Split Device power train using Map-Based components"
     Placement(visible = true, transformation(extent = {{54, 42}, {74, 62}}, rotation = 0)));
   EHPTlib.SupportModels.Miscellaneous.DragForce dragForce(fc = 0.014, rho = 1.226, S = 2.2, Cx = 0.26, m = mass.m) annotation (
     Placement(transformation(extent = {{-9, -9}, {9, 9}}, rotation = 90, origin = {89, 29})));
-  EHPTlib.MapBased.IceConnP ice(wIceStart = wIceStart, mapsFileName = "PSDmaps.txt",
+  EHPTlib.MapBased.IceConnP ice(wIceStart = wIceStart,
     flange_a(phi(start=0, fixed=true)))                                              annotation (
     Placement(transformation(extent = {{-98, 46}, {-78, 66}})));
   EHPTlib.SupportModels.Miscellaneous.Batt1Conn bat(ECellMin = 0.9, ECellMax = 1.45, R0Cell = 0.0003, SOCInit = 0.6, ICellMax = 1e5, iCellEfficiency = 15 * 6.5, ns = 100,
