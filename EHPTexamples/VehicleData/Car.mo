@@ -16,6 +16,6 @@ record Car
   /* Per il calcolo di J abbiamo usato Tavv=2s, Pn=50kW, Wbase= quella 
                                                                                                                                                                                                                                                      corrispondente a 36 km/h, quindi 252 rad/s*/
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio = false, initialScale = 0.1), graphics={  Rectangle(lineColor = {162, 29, 33}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-100, 100}, {100, -100}}), Text(origin = {-6, 74}, lineColor = {162, 29, 33}, extent = {{-94, 22}, {106, -16}}, textString = "Car"), Text(origin = {-6, -58}, lineColor = {0, 0, 255}, extent = {{-94, 22}, {106, -16}}, textString = "%name")}),
+    Icon(coordinateSystem(preserveAspectRatio = false, initialScale = 0.1), graphics={  Rectangle(lineColor = {162, 29, 33}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-100, 100}, {100, -100}}), Text(origin={-6,50},    lineColor = {162, 29, 33}, extent = {{-94, 22}, {106, -16}}, textString = "Car"), Text(origin = {-6, -58}, lineColor = {0, 0, 255}, extent = {{-94, 22}, {106, -16}}, textString = "%name")}),
     Diagram(coordinateSystem(preserveAspectRatio = false)));
 end Car;

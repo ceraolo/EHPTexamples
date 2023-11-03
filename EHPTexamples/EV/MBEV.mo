@@ -48,7 +48,7 @@ equation
   connect(eleDrive.pin_n, ground.p) annotation (
     Line(points = {{-74, 10}, {-74, 10}, {-74, 0}, {-74, 0}}, color = {0, 0, 255}));
   connect(eleDrive.tauRef, driver.tauRef) annotation (
-    Line(points = {{-75.4, 14}, {-86, 14}, {-86, 0}, {-95, 0}}, color = {0, 0, 127}));
+    Line(points={{-74.2,14},{-86,14},{-86,0},{-95,0}},          color = {0, 0, 127}));
   connect(batt1.p, eleDrive.pin_p) annotation (
     Line(points = {{-92, 50}, {-74, 50}, {-74, 18}}, color = {0, 0, 255}));
   connect(edTau.flange_a, eleDrive.flange_a) annotation (
