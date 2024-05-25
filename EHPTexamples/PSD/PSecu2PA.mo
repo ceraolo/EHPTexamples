@@ -28,7 +28,7 @@ model PSecu2PA "Full Power Split Device power train using Map-Based components"
     Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-16, 0})));
   EHPTlib.SupportModels.ConnectorRelated.Conn d annotation (
     Placement(visible = true, transformation(extent = {{2, -40}, {28, -16}}, rotation = 0), iconTransformation(extent = {{4, -52}, {30, -28}}, rotation = 0)));
-  EHPTlib.MapBased.ECUs.Ecu2 ECU(genLoopGain = 1.0, socLoopGain = 2e4, powFiltT = 10) annotation (
+  EHPTlib.MapBased.ECUs.Ecu2 ECU(genLoopGain = 1.0, socLoopGain = 2e4, powFiltT=15.0) annotation (
     Placement(visible = true, transformation(origin={-12,-41},    extent = {{-10, -9}, {10, 9}}, rotation = 0)));
   EHPTlib.MapBased.TwoFlangeConn mot annotation (
     Placement(visible = true, transformation(extent = {{-28, 62}, {-8, 42}}, rotation = 0)));
