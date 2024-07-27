@@ -15,7 +15,7 @@ model MBEVdataLF "Simulates a very basic Electric Vehicle"
     Placement(visible = true, transformation(extent = {{-116, -10}, {-96, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.5715) annotation (
     Placement(visible = true, transformation(extent = {{-4, 4}, {16, 24}}, rotation = 0)));
-  EHPTlib.MapBased.OneFlange2LF eleDrive(J = data.J, A = 0.001, bT = 0.05, bW = 0.02, bP = 0.05, powMax = data.MaxPower, tauMax = data.MaxTorque, uDcNom = 400, wMax = data.MaxOmega) "Electric Drive" annotation (
+  EHPTlib.MapBased.OneFlangeCTLF eleDrive(J = data.J, A = 0.001, bT = 0.05, bW = 0.02, bP = 0.05, powMax = data.MaxPower, tauMax = data.MaxTorque, uDcNom = 400, wMax = data.MaxOmega) "Electric Drive" annotation (
     Placement(visible = true, transformation(extent = {{-74, 6}, {-54, 24}}, rotation = 0)));
   EHPTlib.SupportModels.Miscellaneous.Batt1 batt1(SOCInit = 0.7,
   QCellNom = 100 * 3600, ns = 100,  C1(v(start=0, fixed=true))) annotation (
