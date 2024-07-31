@@ -23,11 +23,12 @@ model SHEVpowerFilt "Ice, Generator, DriveTrain, all map-based"
     Placement(visible = true, transformation(extent = {{-14, 64}, {-30, 80}}, rotation = 0)));
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/Sort1.txt"), extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = 500.0, yMax = 2e3) annotation (
     Placement(visible = true, transformation(extent = {{-94, 76}, {-74, 96}}, rotation = 0)));
-  EHPTlib.MapBased.Genset genset(gsRatio = 1, mapsFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/SHEVmaps.txt"), maxGenW = 300, maxPow = 45000, maxTau = 500, wIceStart = 300) annotation (
+  EHPTlib.MapBased.Genset genset(gsRatio = 1, mapsFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/SHEVmaps.txt"), maxGenW = 300,
+    maxSpeedNorm=600,                                                                                                                                                maxPow = 45000, maxTau = 500, wIceStart = 300) annotation (
     Placement(transformation(extent = {{-80, 8}, {-50, 38}})));
   EHPTlib.SupportModels.Miscellaneous.Batt1 battery(ICellMax = 500, QCellNom = 25 * 3600, R0Cell = 0.35E-3, efficiency = 0.9, iCellEfficiency = 100, ns = 100) annotation (
     Placement(visible = true, transformation(extent = {{0, 20}, {20, 40}}, rotation = 0)));
-  EHPTlib.MapBased.OneFlange drive(effTableName = "motEffTable", mapsFileName = "SHEVmaps.txt", mapsOnFile = false, powMax = 150e3, tauMax = 1000, wMax = 3000) annotation (
+  EHPTlib.MapBased.OneFlangeFVCT drive(effTableName = "motEffTable", mapsFileName = "SHEVmaps.txt", mapsOnFile = false, powMax = 150e3, tauMax = 1000, wMax = 3000) annotation (
     Placement(visible = true, transformation(extent = {{68, 42}, {88, 22}}, rotation = 0)));
   Modelica.Electrical.Analog.Sensors.PowerSensor gsPow annotation (
     Placement(visible = true, transformation(extent = {{-32, 24}, {-12, 44}}, rotation = 0)));
@@ -37,14 +38,13 @@ equation
   connect(battery.n, drivePow.nv) annotation (
     Line(points = {{20.1, 24}, {24, 24}, {24, 14}, {52, 14}, {52, 26}, {52, 26}}, color = {0, 0, 255}));
   connect(drive.pin_p, drivePow.nv) annotation (
-    Line(points={{68,28.6667},{61,28.6667},{61,26},{52,26}},          color = {0, 0, 255}));
+    Line(points={{68,27},{61,27},{61,26},{52,26}},                    color = {0, 0, 255}));
   connect(drivePow.nc, drive.pin_n) annotation (
-    Line(points={{62,36},{66,36},{66,37.5556},{68,37.5556}},          color = {0, 0, 255}));
+    Line(points={{62,36},{66,36},{66,37},{68,37}},                    color = {0, 0, 255}));
   connect(gear.flange_a, drive.flange_a) annotation (
-    Line(points={{-78,-39},{-84,-39},{-84,-14},{98,-14},{98,33.1111},{88,
-          33.1111}}));
+    Line(points={{-78,-39},{-84,-39},{-84,-14},{98,-14},{98,32},{88,32}}));
   connect(drive.tauRef, driver.tauRef) annotation (
-    Line(points={{67.8,33.1111},{67.8,32},{32,32},{32,86},{-73,86}},            color = {0, 0, 127}));
+    Line(points={{67.8,32},{67.8,32},{32,32},{32,86},{-73,86}},                 color = {0, 0, 127}));
   connect(gsPow.nv, genset.pin_n) annotation (
     Line(points = {{-22, 24}, {-22, 24}, {-22, 14}, {-49.7, 14}, {-49.7, 14}}, color = {0, 0, 255}));
   connect(gsPow.pv, gsPow.pc) annotation (

@@ -46,8 +46,6 @@ model PSecu3 "Full Power Split Device power train using Map-Based components"
 equation
   connect(ground.p, bat.n) annotation (
     Line(points={{12,20},{-8,20},{-8,10},{-8,10.1},{-10,10.1}},             color = {0, 0, 255}));
-  connect(ECU.tauReference, driver.tauRef) annotation (
-    Line(points={{-24,-41},{-29,-41},{-29,-40},{-39,-40}},          color = {0, 0, 127}));
   connect(carVel.v, driver.V) annotation (
     Line(points = {{78, -23}, {78, -58}, {-50, -58}, {-50, -51.2}}, color = {0, 0, 127}));
   connect(mot.conn1, ECU.conn) annotation (
@@ -90,6 +88,8 @@ equation
     Line(points = {{89, 38}, {90, 38}, {90, 52}, {74, 52}}, color = {0, 127, 0}, smooth = Smooth.None));
   connect(carVel.flange, mass.flange_b) annotation (
     Line(points = {{78, -2}, {78, 52}, {74, 52}}, color = {0, 127, 0}, smooth = Smooth.None));
+  connect(driver.tauRef, ECU.tauRef)
+    annotation (Line(points={{-39,-40},{-38,-41},{-24,-41}}, color={0,0,127}));
   annotation (
     __Dymola_experimentSetupOutput,
     Documentation(info = "<html><head></head><body><p>This model simulates a PSD based power train with a simple control logic, in its ECU:</p>

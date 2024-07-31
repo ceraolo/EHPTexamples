@@ -51,14 +51,18 @@ equation
     Line(points={{-24,-41},{-29,-41},{-29,-40},{-39,-40}},          color = {0, 0, 127}));
   connect(carVel.v, driver.V) annotation (
     Line(points = {{78, -23}, {78, -58}, {-50, -58}, {-50, -51.2}}, color = {0, 0, 127}));
-  connect(mot.conn1, ECU.conn1) annotation (
-    Line(points={{-26.8,59.8},{-26.8,72},{50,72},{50,-20},{-12,-20},{-12,-32.18}},              color = {255, 204, 51}, thickness = 0.5));
+  connect(mot.conn1, ECU.conn) annotation (Line(
+      points={{-26.8,59.8},{-26.8,72},{50,72},{50,-20},{-12,-20},{-12,-32.18}},
+      color={255,204,51},
+      thickness=0.5));
   connect(gen.pin_n, bat.n) annotation (
     Line(points={{-38,16},{-10,16},{-10,10.1}},          color = {0, 0, 255}));
   connect(gen.flange_a, PSD.sun) annotation (
     Line(points = {{-58, 20}, {-58, 20}, {-70, 20}, {-70, 52}, {-60, 52}}));
-  connect(gen.conn, ECU.conn1) annotation (
-    Line(points={{-57,12.2},{-57,-20},{-12,-20},{-12,-32.18}},          color = {255, 204, 51}, thickness = 0.5));
+  connect(gen.conn, ECU.conn) annotation (Line(
+      points={{-57,12.2},{-57,-20},{-12,-20},{-12,-32.18}},
+      color={255,204,51},
+      thickness=0.5));
   connect(ground.p, bat.n) annotation (
     Line(points={{0,26},{-10,26},{-10,10.1}},          color = {0, 0, 255}));
   connect(wheel.flangeR, idealGear.flange_b) annotation (
@@ -71,12 +75,18 @@ equation
     Line(points={{-22,43.8},{-22,10},{-22,10}},           color = {0, 0, 255}));
   connect(mot.pin_n, bat.n) annotation (
     Line(points={{-14,43.8},{-14,10.1},{-10,10.1}},       color = {0, 0, 255}));
-  connect(bat.conn, ECU.conn1) annotation (
-    Line(points={{-12,-10.2},{-12,-32.18}},                                           color = {255, 204, 51}, thickness = 0.5));
-  connect(ice.conn, ECU.conn1) annotation (
-    Line(points={{-88,45.8},{-88,-20},{-12,-20},{-12,-32.18}},                       color = {255, 204, 51}, thickness = 0.5));
-  connect(ECU.conn1, d) annotation (
-    Line(points={{-12,-32.18},{-12,-28},{15,-28}},        color = {255, 204, 51}, thickness = 0.5));
+  connect(bat.conn, ECU.conn) annotation (Line(
+      points={{-12,-10.2},{-12,-32.18}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ice.conn, ECU.conn) annotation (Line(
+      points={{-88,45.8},{-88,-20},{-12,-20},{-12,-32.18}},
+      color={255,204,51},
+      thickness=0.5));
+  connect(ECU.conn, d) annotation (Line(
+      points={{-12,-32.18},{-12,-28},{15,-28}},
+      color={255,204,51},
+      thickness=0.5));
   der(EbatDel) = (bat.p.v - bat.n.v) * bat.n.i;
   der(EgenDelM) = gen.pin_p.i * (gen.pin_p.v - gen.pin_n.v) + gen.flange_a.tau * der(gen.flange_a.phi);
   der(Eroad) = dragForce.flange.f * der(dragForce.flange.s);
