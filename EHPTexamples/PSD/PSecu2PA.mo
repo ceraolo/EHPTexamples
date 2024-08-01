@@ -36,8 +36,8 @@ model PSecu2PA "Full Power Split Device power train using Map-Based components"
     Placement(visible = true, transformation(origin = {38, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (
     Placement(visible = true, transformation(origin = {10, 26}, extent = {{10, 10}, {-10, -10}}, rotation = 270)));
-  EHPTlib.MapBased.OneFlangeConn gen annotation (
-    Placement(visible = true, transformation(extent = {{-38, 10}, {-58, 30}}, rotation = 0)));
+  EHPTlib.MapBased.OneFlangeFVCTconn gen annotation (Placement(visible=true,
+        transformation(extent={{-38,10},{-58,30}}, rotation=0)));
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(yMax = 1.8, CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/NEDC.txt"), k = 1) annotation (
     Placement(visible = true, transformation(extent = {{-60, -50}, {-40, -30}}, rotation = 0)));
 equation
@@ -47,8 +47,6 @@ equation
     Line(points = {{89, 38}, {90, 38}, {90, 52}, {74, 52}}, color = {0, 127, 0}));
   connect(wheel.flangeT, mass.flange_a) annotation (
     Line(points = {{48, 52}, {54, 52}}, color = {0, 127, 0}));
-  connect(ECU.tauReference, driver.tauRef) annotation (
-    Line(points={{-24,-41},{-29,-41},{-29,-40},{-39,-40}},          color = {0, 0, 127}));
   connect(carVel.v, driver.V) annotation (
     Line(points = {{78, -23}, {78, -58}, {-50, -58}, {-50, -51.2}}, color = {0, 0, 127}));
   connect(mot.conn1, ECU.conn) annotation (Line(
@@ -56,11 +54,11 @@ equation
       color={255,204,51},
       thickness=0.5));
   connect(gen.pin_n, bat.n) annotation (
-    Line(points={{-38,16},{-10,16},{-10,10.1}},          color = {0, 0, 255}));
+    Line(points={{-38,15},{-10,15},{-10,10.1}},          color = {0, 0, 255}));
   connect(gen.flange_a, PSD.sun) annotation (
     Line(points = {{-58, 20}, {-58, 20}, {-70, 20}, {-70, 52}, {-60, 52}}));
   connect(gen.conn, ECU.conn) annotation (Line(
-      points={{-57,12.2},{-57,-20},{-12,-20},{-12,-32.18}},
+      points={{-57,10.25},{-57,-20},{-12,-20},{-12,-32.18}},
       color={255,204,51},
       thickness=0.5));
   connect(ground.p, bat.n) annotation (
@@ -96,7 +94,9 @@ equation
   connect(PSD.carrier, ice.flange_a) annotation (
     Line(points = {{-60, 56}, {-78, 56}}, color = {0, 0, 0}, smooth = Smooth.None));
   connect(gen.pin_p, bat.p) annotation (
-    Line(points={{-38,24},{-38,34},{-22,34},{-22,10},{-22,10}},               color = {0, 0, 255}));
+    Line(points={{-38,25},{-38,34},{-22,34},{-22,10},{-22,10}},               color = {0, 0, 255}));
+  connect(ECU.tauRef, driver.tauRef)
+    annotation (Line(points={{-24,-41},{-24,-40},{-39,-40}}, color={0,0,127}));
   annotation (
     __Dymola_experimentSetupOutput,
     Documentation(info = "<html>

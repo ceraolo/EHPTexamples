@@ -13,17 +13,19 @@ model MBEV "Simulates a very basic Electric Vehicle"
     Placement(visible = true, transformation(extent = {{-116, -10}, {-96, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.5715) annotation (
     Placement(visible = true, transformation(extent = {{-4, 4}, {16, 24}}, rotation = 0)));
-  EHPTlib.MapBased.OneFlangeFVCT eleDrive(J = 0.25, effTableName = "effTable", mapsFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/EVmaps.txt"), mapsOnFile = true, tauMax = 150, wMax = 500) "Electric Drive" annotation (
+  EHPTlib.MapBased.OneFlangeFVCT eleDrive(J = 0.25, effTableName = "effTable",
+        mapsFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/EVmaps.txt"),
+        effMapOnFile = true, tauMax = 150, wMax = 500) "Electric Drive" annotation (
     Placement(visible = true, transformation(extent = {{-74, 6}, {-54, 24}}, rotation = 0)));
   EHPTlib.SupportModels.Miscellaneous.Batt1 batt1(SOCInit = 0.7, QCellNom = 100 * 3600, ns = 100,
-    C1(v(start=0, fixed=true)))                                                                   annotation (
+    C1(v(start=0, fixed=true)))            annotation (
     Placement(transformation(extent = {{-112, 34}, {-92, 54}})));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (
     Placement(visible = true, transformation(extent = {{-84, -20}, {-64, 0}}, rotation = 0)));
   Modelica.Mechanics.Translational.Sensors.PowerSensor mP1 annotation (
     Placement(visible = true, transformation(origin = {32, 14}, extent = {{-6, -8}, {6, 8}}, rotation = 0)));
   Modelica.Mechanics.Translational.Components.Mass mass(m = 1300, v(fixed=true))
-                                                                  annotation (
+          annotation (
     Placement(visible = true, transformation(extent = {{56, 4}, {76, 24}}, rotation = 0)));
   Modelica.Mechanics.Translational.Sensors.PowerSensor mP2 annotation (
     Placement(visible = true, transformation(origin = {98, 4}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));

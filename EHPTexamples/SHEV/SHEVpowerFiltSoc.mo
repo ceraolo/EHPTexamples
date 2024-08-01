@@ -22,12 +22,13 @@ model SHEVpowerFiltSoc "Ice, Generator, DriveTrain, all map-based"
     Placement(visible = true, transformation(extent = {{-100, 90}, {-80, 110}}, rotation = 0)));
   EHPTlib.MapBased.Genset genset(gsRatio = 1,
     mapsFileName=Modelica.Utilities.Files.loadResource(
-        "modelica://EHPTexamples/Resources/SHEVmaps.txt"),                   maxGenW = 300,
-    maxSpeedNorm=300,                                                                       maxPow = 45000, maxTau = 500, wIceStart = 300) annotation (
+        "modelica://EHPTexamples/Resources/SHEVmaps.txt"),  maxGenW = 300,
+    maxSpeedNorm=300,    maxPow = 45000, maxTau = 500, wIceStart = 300) annotation (
     Placement(transformation(extent = {{-80, -34}, {-50, -4}})));
   EHPTlib.SupportModels.Miscellaneous.Batt1 battery(ICellMax = 500, QCellNom = 25 * 3600, R0Cell = 0.35E-3, efficiency = 0.9, iCellEfficiency = 200, ns = 200) annotation (
     Placement(transformation(extent = {{0, -24}, {20, -4}})));
-  EHPTlib.MapBased.OneFlangeFVCT drive(effTableName = "motEffTable", mapsFileName = "SHEVmaps.txt", mapsOnFile = false, powMax = 150e3, tauMax = 1000, wMax = 3000) annotation (
+  EHPTlib.MapBased.OneFlangeFVCT drive(effTableName = "motEffTable",
+     mapsFileName = "SHEVmaps.txt", effMapOnFile = false, powMax = 150e3, tauMax = 1000, wMax = 3000) annotation (
     Placement(visible = true, transformation(extent={{68,-10},{88,-30}},      rotation = 0)));
   Modelica.Electrical.Analog.Sensors.PowerSensor gsPow annotation (
     Placement(transformation(extent = {{-32, -20}, {-12, 0}})));

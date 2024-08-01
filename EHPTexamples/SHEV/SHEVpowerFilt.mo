@@ -28,7 +28,8 @@ model SHEVpowerFilt "Ice, Generator, DriveTrain, all map-based"
     Placement(transformation(extent = {{-80, 8}, {-50, 38}})));
   EHPTlib.SupportModels.Miscellaneous.Batt1 battery(ICellMax = 500, QCellNom = 25 * 3600, R0Cell = 0.35E-3, efficiency = 0.9, iCellEfficiency = 100, ns = 100) annotation (
     Placement(visible = true, transformation(extent = {{0, 20}, {20, 40}}, rotation = 0)));
-  EHPTlib.MapBased.OneFlangeFVCT drive(effTableName = "motEffTable", mapsFileName = "SHEVmaps.txt", mapsOnFile = false, powMax = 150e3, tauMax = 1000, wMax = 3000) annotation (
+  EHPTlib.MapBased.OneFlangeFVCT drive(effTableName = "motEffTable",
+     mapsFileName = "SHEVmaps.txt", effMapOnFile = false, powMax = 150e3, tauMax = 1000, wMax = 3000) annotation (
     Placement(visible = true, transformation(extent = {{68, 42}, {88, 22}}, rotation = 0)));
   Modelica.Electrical.Analog.Sensors.PowerSensor gsPow annotation (
     Placement(visible = true, transformation(extent = {{-32, 24}, {-12, 44}}, rotation = 0)));

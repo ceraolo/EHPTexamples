@@ -37,8 +37,8 @@ model PSecu3 "Full Power Split Device power train using Map-Based components"
     Placement(visible = true, transformation(extent = {{-28, 62}, {-8, 42}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.31) annotation (
     Placement(visible = true, transformation(origin = {38, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  EHPTlib.MapBased.OneFlangeConn gen annotation (
-    Placement(visible = true, transformation(extent = {{-38, 10}, {-58, 30}}, rotation = 0)));
+  EHPTlib.MapBased.OneFlangeFVCTconn gen annotation (Placement(visible=true,
+        transformation(extent={{-38,10},{-58,30}}, rotation=0)));
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/NEDC.txt"), k = 1, yMax = 1.8) annotation (
     Placement(visible = true, transformation(extent = {{-60, -50}, {-40, -30}}, rotation = 0)));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (
@@ -51,13 +51,13 @@ equation
   connect(mot.conn1, ECU.conn) annotation (
     Line(points={{-26.8,59.8},{-26.8,72},{50,72},{50,-20},{-12,-20},{-12,-32.18}},              color = {255, 204, 51}, thickness = 0.5));
   connect(gen.pin_p, bat.p) annotation (
-    Line(points={{-38,24},{-22,24},{-22,10},{-22,10}},             color = {0, 0, 255}));
+    Line(points={{-38,25},{-22,25},{-22,10},{-22,10}},             color = {0, 0, 255}));
   connect(gen.pin_n, bat.n) annotation (
-    Line(points={{-38,16},{-10,16},{-10,10.1}},          color = {0, 0, 255}));
+    Line(points={{-38,15},{-10,15},{-10,10.1}},          color = {0, 0, 255}));
   connect(gen.flange_a, PSD.sun) annotation (
     Line(points = {{-58, 20}, {-70, 20}, {-70, 52}, {-60, 52}}));
   connect(gen.conn, ECU.conn) annotation (
-    Line(points={{-57,12.2},{-57,-20},{-12,-20},{-12,-32.18}},          color = {255, 204, 51}, thickness = 0.5));
+    Line(points={{-57,10.25},{-57,-20},{-12,-20},{-12,-32.18}},         color = {255, 204, 51}, thickness = 0.5));
   connect(wheel.flangeT, mass.flange_a) annotation (
     Line(points = {{48, 52}, {54, 52}}, color = {0, 127, 0}));
   connect(wheel.flangeR, idealGear.flange_b) annotation (

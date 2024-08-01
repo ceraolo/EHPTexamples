@@ -20,7 +20,7 @@ model SHEV_OO "Ice, Generator, DriveTrain, all map-based"
     Placement(visible = true, transformation(origin = {26, -56}, extent = {{-8, -8}, {8, 8}}, rotation = 270)));
   EHPTlib.SupportModels.Miscellaneous.Batt1 battery(ICellMax = 500, QCellNom = 25 * 3600, R0Cell = 0.35E-3, SOCInit = 0.5, efficiency = 0.9, iCellEfficiency = 200, ns = 100) annotation (
     Placement(visible = true, transformation(origin = {-2, 26}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  EHPTlib.MapBased.OneFlangeFVCT drive(effTableName = "motEffTable", mapsFileName = "SHEVmaps.txt", mapsOnFile = false, powMax = 150e3, tauMax = 1000, wMax = 3000) annotation (
+  EHPTlib.MapBased.OneFlangeFVCT drive(effTableName = "motEffTable", mapsFileName = "SHEVmaps.txt", effMapOnFile = false, powMax = 150e3, tauMax = 1000, wMax = 3000) annotation (
     Placement(visible = true, transformation(extent = {{64, 16}, {84, -4}}, rotation = 0)));
   Modelica.Electrical.Analog.Sensors.PowerSensor gsPow annotation (
     Placement(visible = true, transformation(extent = {{-36, 0}, {-16, 20}}, rotation = 0)));
@@ -28,8 +28,8 @@ model SHEV_OO "Ice, Generator, DriveTrain, all map-based"
     Placement(visible = true, transformation(origin = {-20, 58}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   EHPTlib.MapBased.GensetOO genset(gsRatio = 1,
     mapsFileName=Modelica.Utilities.Files.loadResource(
-        "modelica://EHPTexamples/Resources/SHEVmaps.txt"),                     maxGenW = 300,
-    maxSpeedNorm=600,                                                                         maxPow = 45000, maxTau = 500, wIceStart = 300) annotation (
+        "modelica://EHPTexamples/Resources/SHEVmaps.txt"),   maxGenW = 300,
+    maxSpeedNorm=600,     maxPow = 45000, maxTau = 500, wIceStart = 300) annotation (
     Placement(visible = true, transformation(extent = {{-84, -14}, {-54, 16}}, rotation = 0)));
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(
     CycleFileName=Modelica.Utilities.Files.loadResource(
