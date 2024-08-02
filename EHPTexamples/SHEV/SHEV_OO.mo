@@ -33,7 +33,7 @@ model SHEV_OO "Ice, Generator, DriveTrain, all map-based"
     Placement(visible = true, transformation(extent = {{-84, -14}, {-54, 16}}, rotation = 0)));
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(
     CycleFileName=Modelica.Utilities.Files.loadResource(
-        "modelica://EHPTexamples/Resources/sort1.txt"),                                                                                                       extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = 200.0, yMax = 2e3) annotation (
+        "modelica://EHPTexamples/Resources/Sort1.txt"),                                                                                                       extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = 200.0, yMax = 2e3) annotation (
     Placement(visible = true, transformation(origin = {86, 60}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   Modelica.Electrical.Analog.Sensors.PowerSensor drivePow annotation (
     Placement(visible = true, transformation(origin = {40, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
