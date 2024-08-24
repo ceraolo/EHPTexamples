@@ -1,4 +1,4 @@
-within EHPTexamples.SHEV;
+﻿within EHPTexamples.SHEV;
 model SHEVpowerFiltSoc "Ice, Generator, DriveTrain, all map-based"
   //€
   extends Modelica.Icons.Example;
@@ -54,21 +54,21 @@ equation
   connect(gsPow.nv, genset.pin_n) annotation (
     Line(points = {{-22, -20}, {-22, -28}, {-49.7, -28}}, color = {0, 0, 255}));
   connect(drivePow.nv, drive.pin_p) annotation (
-    Line(points={{50,-18},{50,-25},{68,-25}},                  color = {0, 0, 255}));
+    Line(points={{50,-18},{50,-24},{68,-24}},                  color = {0, 0, 255}));
   connect(drivePow.pc, battery.p) annotation (
     Line(points = {{40, -8}, {20, -8}}, color = {0, 0, 255}));
   connect(drivePow.pv, drivePow.pc) annotation (
     Line(points = {{50, 2}, {40, 2}, {40, -8}}, color = {0, 0, 255}));
   connect(drivePow.nc, drive.pin_n) annotation (
-    Line(points={{60,-8},{68,-8},{68,-15}},             color = {0, 0, 255}));
+    Line(points={{60,-8},{68,-8},{68,-16}},             color = {0, 0, 255}));
   connect(gear.flange_a, drive.flange_a) annotation (
     Line(points={{-78,-60},{-84,-60},{-84,-42},{96,-42},{96,-20},{88,-20}}));
   connect(drive.tauRef, driver.tauRef) annotation (
     Line(points={{67.8,-20},{64,-20},{64,24},{82,24},{82,100},{-79,100}},                              color = {0, 0, 127}));
   connect(battery.n, drive.pin_p) annotation (
-    Line(points={{20.1,-20},{24,-20},{24,-28},{32,-28},{32,-25},{68,-25}},                        color = {0, 0, 255}));
+    Line(points={{20.1,-20},{24,-20},{24,-28},{32,-28},{32,-24},{68,-24}},                        color = {0, 0, 255}));
   connect(gsPow.nv, drive.pin_p) annotation (
-    Line(points={{-22,-20},{-22,-28},{32,-28},{32,-25},{68,-25}},                      color = {0, 0, 255}));
+    Line(points={{-22,-20},{-22,-28},{32,-28},{32,-24},{68,-24}},                      color = {0, 0, 255}));
   connect(socErrToPow.y, add.u2) annotation (
     Line(points = {{-35, 48}, {-46, 48}, {-46, 66}, {12, 66}, {12, 74}, {6, 74}}, color = {0, 0, 127}));
   connect(toPowRef.y, genset.powRef) annotation (

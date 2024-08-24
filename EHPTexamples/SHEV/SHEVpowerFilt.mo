@@ -39,9 +39,9 @@ equation
   connect(battery.n, drivePow.nv) annotation (
     Line(points = {{20.1, 24}, {24, 24}, {24, 14}, {52, 14}, {52, 26}, {52, 26}}, color = {0, 0, 255}));
   connect(drive.pin_p, drivePow.nv) annotation (
-    Line(points={{68,27},{61,27},{61,26},{52,26}},                    color = {0, 0, 255}));
+    Line(points={{68,28},{61,28},{61,26},{52,26}},                    color = {0, 0, 255}));
   connect(drivePow.nc, drive.pin_n) annotation (
-    Line(points={{62,36},{66,36},{66,37},{68,37}},                    color = {0, 0, 255}));
+    Line(points={{62,36},{66,36},{66,36},{68,36}},                    color = {0, 0, 255}));
   connect(gear.flange_a, drive.flange_a) annotation (
     Line(points={{-78,-39},{-84,-39},{-84,-14},{98,-14},{98,32},{88,32}}));
   connect(drive.tauRef, driver.tauRef) annotation (

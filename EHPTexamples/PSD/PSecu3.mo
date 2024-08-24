@@ -31,33 +31,33 @@ model PSecu3 "Full Power Split Device power train using Map-Based components"
     Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-16, 0})));
   EHPTlib.SupportModels.ConnectorRelated.Conn d annotation (
     Placement(visible = true, transformation(extent = {{2, -40}, {28, -16}}, rotation = 0), iconTransformation(extent = {{4, -52}, {30, -28}}, rotation = 0)));
-  EHPTlib.MapBased.ECUs.Ecu3 ECU(genLoopGain = 1.0, socRef = 0.65) annotation (
+  EHPTlib.MapBased.ECUs.PsdEcu3 ECU(genLoopGain = 1.0, socRef = 0.65) annotation (
     Placement(visible = true, transformation(origin={-12,-41},    extent = {{-10, -9}, {10, 9}}, rotation = 0)));
   EHPTlib.MapBased.TwoFlangeConn mot annotation (
     Placement(visible = true, transformation(extent = {{-28, 62}, {-8, 42}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.31) annotation (
     Placement(visible = true, transformation(origin = {38, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EHPTlib.MapBased.OneFlangeFVCTconn gen annotation (Placement(visible=true,
-        transformation(extent={{-38,10},{-58,30}}, rotation=0)));
+        transformation(extent={{-38,10},{-58,28}}, rotation=0)));
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/NEDC.txt"), k = 1, yMax = 1.8) annotation (
     Placement(visible = true, transformation(extent = {{-60, -50}, {-40, -30}}, rotation = 0)));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (
-    Placement(visible = true, transformation(origin = {12, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin={10,20},    extent = {{-10, -10}, {10, 10}}, rotation=90)));
 equation
   connect(ground.p, bat.n) annotation (
-    Line(points={{12,20},{-8,20},{-8,10},{-8,10.1},{-10,10.1}},             color = {0, 0, 255}));
+    Line(points={{0,20},{-10,20},{-10,10.1}},                               color = {0, 0, 255}));
   connect(carVel.v, driver.V) annotation (
     Line(points = {{78, -23}, {78, -58}, {-50, -58}, {-50, -51.2}}, color = {0, 0, 127}));
   connect(mot.conn1, ECU.conn) annotation (
     Line(points={{-26.8,59.8},{-26.8,72},{50,72},{50,-20},{-12,-20},{-12,-32.18}},              color = {255, 204, 51}, thickness = 0.5));
   connect(gen.pin_p, bat.p) annotation (
-    Line(points={{-38,25},{-22,25},{-22,10},{-22,10}},             color = {0, 0, 255}));
+    Line(points={{-38,23.5},{-22,23.5},{-22,10}},                  color = {0, 0, 255}));
   connect(gen.pin_n, bat.n) annotation (
-    Line(points={{-38,15},{-10,15},{-10,10.1}},          color = {0, 0, 255}));
+    Line(points={{-38,14.5},{-10,14.5},{-10,10.1}},      color = {0, 0, 255}));
   connect(gen.flange_a, PSD.sun) annotation (
-    Line(points = {{-58, 20}, {-70, 20}, {-70, 52}, {-60, 52}}));
+    Line(points={{-58,19},{-70,19},{-70,52},{-60,52}}));
   connect(gen.conn, ECU.conn) annotation (
-    Line(points={{-57,10.25},{-57,-20},{-12,-20},{-12,-32.18}},         color = {255, 204, 51}, thickness = 0.5));
+    Line(points={{-57,10.225},{-57,-20},{-12,-20},{-12,-32.18}},        color = {255, 204, 51}, thickness = 0.5));
   connect(wheel.flangeT, mass.flange_a) annotation (
     Line(points = {{48, 52}, {54, 52}}, color = {0, 127, 0}));
   connect(wheel.flangeR, idealGear.flange_b) annotation (

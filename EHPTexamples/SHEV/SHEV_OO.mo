@@ -24,7 +24,7 @@ model SHEV_OO "Ice, Generator, DriveTrain, all map-based"
     Placement(visible = true, transformation(extent = {{64, 16}, {84, -4}}, rotation = 0)));
   Modelica.Electrical.Analog.Sensors.PowerSensor gsPow annotation (
     Placement(visible = true, transformation(extent = {{-36, 0}, {-16, 20}}, rotation = 0)));
-  EHPTlib.MapBased.ECUs.EMS ems(powHigh = 60e3, powLow = 30e3, powMax = 200e3, powPerSoc = 300e3, socRef = 0.6) annotation (
+  EHPTlib.MapBased.ECUs.ShevEMS ems(powHigh = 60e3, powLow = 30e3, powMax = 200e3, powPerSoc = 300e3, socRef = 0.6) annotation (
     Placement(visible = true, transformation(origin = {-20, 58}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   EHPTlib.MapBased.GensetOO genset(gsRatio = 1,
     mapsFileName=Modelica.Utilities.Files.loadResource(
@@ -39,7 +39,7 @@ model SHEV_OO "Ice, Generator, DriveTrain, all map-based"
     Placement(visible = true, transformation(origin = {40, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(genset.pin_n, drive.pin_p) annotation (
-    Line(points={{-53.7,-8},{10,-8},{10,1},{64,1}},                      color = {0, 0, 255}));
+    Line(points={{-53.7,-8},{10,-8},{10,2},{64,2}},                      color = {0, 0, 255}));
   connect(gsPow.pc, genset.pin_p) annotation (
     Line(points = {{-36, 10}, {-54, 10}}, color = {0, 0, 255}));
   connect(ems.pcPowReq, genset.powRef) annotation (
@@ -52,21 +52,21 @@ equation
   connect(drivePow.power, ems.edPow) annotation (
     Line(points={{30,5},{16,5},{16,64},{-8,64},{-8,64}},            color = {0, 0, 127}));
   connect(drivePow.nv, drive.pin_p) annotation (
-    Line(points={{40,6},{40,6},{40,0},{64,0},{64,1}},                  color = {0, 0, 255}));
+    Line(points={{40,6},{40,6},{40,0},{64,0},{64,2}},                  color = {0, 0, 255}));
   connect(drivePow.pc, battery.p) annotation (
     Line(points = {{30, 16}, {4, 16}, {4, 16}, {4, 16}}, color = {0, 0, 255}));
   connect(drivePow.pv, drivePow.nc) annotation (
     Line(points = {{40, 26}, {50, 26}, {50, 16}, {50, 16}}, color = {0, 0, 255}));
   connect(drivePow.nc, drive.pin_n) annotation (
-    Line(points={{50,16},{64,16},{64,11},{64,11}},                    color = {0, 0, 255}));
+    Line(points={{50,16},{64,16},{64,10},{64,10}},                    color = {0, 0, 255}));
   connect(driver.tauRef, drive.tauRef) annotation (
     Line(points={{75,60},{57,60},{57,4.5},{63.8,4.5},{63.8,6}},                  color = {0, 0, 127}));
   connect(ground1.p, drive.pin_p) annotation (
-    Line(points={{22,-4},{22,1},{64,1}},                    color = {0, 0, 255}));
+    Line(points={{22,-4},{22,2},{64,2}},                    color = {0, 0, 255}));
   connect(gsPow.nv, drive.pin_p) annotation (
-    Line(points={{-26,0},{-26,-8},{10,-8},{10,1},{64,1}},                        color = {0, 0, 255}));
+    Line(points={{-26,0},{-26,-8},{10,-8},{10,2},{64,2}},                        color = {0, 0, 255}));
   connect(battery.n, drive.pin_p) annotation (
-    Line(points={{-8,15.9},{-8,-8},{10,-8},{10,1},{64,1}},                        color = {0, 0, 255}));
+    Line(points={{-8,15.9},{-8,-8},{10,-8},{10,2},{64,2}},                        color = {0, 0, 255}));
   connect(speedSensor1.v, driver.V) annotation (
     Line(points = {{26, -64.8}, {26, -74}, {98, -74}, {98, 44}, {86, 44}, {86, 48.8}}, color = {0, 0, 127}));
   connect(gear.flange_b, wheel.flangeR) annotation (
