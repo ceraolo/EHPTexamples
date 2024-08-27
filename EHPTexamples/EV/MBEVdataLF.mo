@@ -15,8 +15,18 @@ model MBEVdataLF "Simulates a very basic Electric Vehicle"
     Placement(visible = true, transformation(extent = {{-116, -10}, {-96, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.5715) annotation (
     Placement(visible = true, transformation(extent = {{-4, 4}, {16, 24}}, rotation = 0)));
-  EHPTlib.MapBased.OneFlangeCTLF eleDrive(J = data.J, A = 0.001, bT = 0.05, bW = 0.02, bP = 0.05, powMax = data.MaxPower, tauMax = data.MaxTorque, uDcNom = 400, wMax = data.MaxOmega) "Electric Drive" annotation (
-    Placement(visible = true, transformation(extent = {{-74, 6}, {-54, 24}}, rotation = 0)));
+  EHPTlib.MapBased.OneFlange eleDrive(
+    J=data.J,
+    efficiencyFromTable=false,
+    A=0.001,
+    bT=0.05,
+    bW=0.02,
+    bP=0.05,
+    powMax=data.MaxPower,
+    tauMax=data.MaxTorque,
+    uDcNom=400,
+    wMax=data.MaxOmega) "Electric Drive" annotation (Placement(visible=true,
+        transformation(extent={{-74,6},{-54,24}}, rotation=0)));
   EHPTlib.SupportModels.Miscellaneous.Batt1 batt1(SOCInit = 0.7,
   QCellNom = 100 * 3600, ns = 100,  C1(v(start=0, fixed=true))) annotation (
     Placement(transformation(extent = {{-112, 34}, {-92, 54}})));
@@ -48,15 +58,15 @@ model MBEVdataLF "Simulates a very basic Electric Vehicle"
     Placement(visible = true, transformation(origin = {70, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(batt1.n, eleDrive.pin_n) annotation (
-    Line(points = {{-91.9, 38}, {-80, 38}, {-80, 10}, {-74, 10}}, color = {0, 0, 255}));
+    Line(points={{-91.9,38},{-80,38},{-80,11.4},{-74,11.4}},      color = {0, 0, 255}));
   connect(eleDrive.pin_n, ground.p) annotation (
-    Line(points = {{-74, 10}, {-74, 10}, {-74, 0}, {-74, 0}}, color = {0, 0, 255}));
+    Line(points={{-74,11.4},{-74,11.4},{-74,0},{-74,0}},      color = {0, 0, 255}));
   connect(eleDrive.tauRef, driver.tauRef) annotation (
-    Line(points={{-74,14},{-86,14},{-86,0},{-95,0}},            color = {0, 0, 127}));
+    Line(points={{-75.4,15},{-86,15},{-86,0},{-95,0}},          color = {0, 0, 127}));
   connect(batt1.p, eleDrive.pin_p) annotation (
-    Line(points = {{-92, 50}, {-74, 50}, {-74, 18}}, color = {0, 0, 255}));
+    Line(points={{-92,50},{-74,50},{-74,18.6}},      color = {0, 0, 255}));
   connect(edTau.flange_a, eleDrive.flange_a) annotation (
-    Line(points = {{-50, 14}, {-54, 14}}));
+    Line(points={{-50,14},{-52,14},{-52,15},{-54,15}}));
   connect(tqToForce.y, brake.f) annotation (
     Line(points = {{12.6, -20}, {18, -20}, {18, -20}, {20, -20}}, color = {0, 0, 127}));
   connect(cutNeg.y, tqToForce.u) annotation (

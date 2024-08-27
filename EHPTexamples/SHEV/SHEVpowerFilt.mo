@@ -28,9 +28,14 @@ model SHEVpowerFilt "Ice, Generator, DriveTrain, all map-based"
     Placement(transformation(extent = {{-80, 8}, {-50, 38}})));
   EHPTlib.SupportModels.Miscellaneous.Batt1 battery(ICellMax = 500, QCellNom = 25 * 3600, R0Cell = 0.35E-3, efficiency = 0.9, iCellEfficiency = 100, ns = 100) annotation (
     Placement(visible = true, transformation(extent = {{0, 20}, {20, 40}}, rotation = 0)));
-  EHPTlib.MapBased.OneFlangeFVCT drive(effTableName = "motEffTable",
-     mapsFileName = "SHEVmaps.txt", effMapOnFile = false, powMax = 150e3, tauMax = 1000, wMax = 3000) annotation (
-    Placement(visible = true, transformation(extent = {{68, 42}, {88, 22}}, rotation = 0)));
+  EHPTlib.MapBased.OneFlange drive(
+    efficiencyFromTable=false,
+    effTableName="motEffTable",
+    effMapOnFile=false,
+    powMax=150e3,
+    tauMax=1000,
+    wMax=3000) annotation (Placement(visible=true, transformation(extent={{68,42},
+            {88,22}}, rotation=0)));
   Modelica.Electrical.Analog.Sensors.PowerSensor gsPow annotation (
     Placement(visible = true, transformation(extent = {{-32, 24}, {-12, 44}}, rotation = 0)));
   Modelica.Electrical.Analog.Sensors.PowerSensor drivePow annotation (
@@ -45,7 +50,7 @@ equation
   connect(gear.flange_a, drive.flange_a) annotation (
     Line(points={{-78,-39},{-84,-39},{-84,-14},{98,-14},{98,32},{88,32}}));
   connect(drive.tauRef, driver.tauRef) annotation (
-    Line(points={{67.8,32},{67.8,32},{32,32},{32,86},{-73,86}},                 color = {0, 0, 127}));
+    Line(points={{66.6,32},{66.6,32},{32,32},{32,86},{-73,86}},                 color = {0, 0, 127}));
   connect(gsPow.nv, genset.pin_n) annotation (
     Line(points = {{-22, 24}, {-22, 24}, {-22, 14}, {-49.7, 14}, {-49.7, 14}}, color = {0, 0, 255}));
   connect(gsPow.pv, gsPow.pc) annotation (
@@ -83,7 +88,8 @@ equation
   connect(genset.pin_n, ground1.p) annotation (
     Line(points = {{-49.7, 14}, {-42, 14}, {-42, 6}}, color = {0, 0, 255}, smooth = Smooth.None));
   annotation (
-    Diagram(coordinateSystem(extent = {{-100, -80}, {100, 100}}, initialScale = 0.1), graphics={  Rectangle(lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-90, -28}, {94, -70}}), Rectangle(lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-90, 52}, {94, -10}}), Rectangle(lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-60, 96}, {94, 58}}), Text(lineColor = {255, 0, 0}, fillPattern = FillPattern.Solid, extent = {{68, 74}, {94, 66}}, textString = "EMS"), Text(lineColor = {255, 0, 0}, extent = {{-96, -60}, {-44, -68}}, textString = "Longitudinal Dynamics"), Text(lineColor = {255, 0, 0}, fillPattern = FillPattern.Solid, extent = {{12, 0}, {58, -8}}, textString = "PowerTrain")}),
+    Diagram(coordinateSystem(extent = {{-100, -80}, {100, 100}}, initialScale = 0.1), graphics={  Rectangle(lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-90, -28}, {94, -70}}), Rectangle(lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-90, 52}, {94, -10}}), Rectangle(lineColor = {255, 0, 0}, pattern = LinePattern.Dash, extent = {{-60, 96}, {94, 58}}), Text(lineColor = {255, 0, 0}, fillPattern = FillPattern.Solid, extent = {{68, 74}, {94, 66}}, textString = "EMS"), Text(lineColor = {255, 0, 0}, extent={{-88,-60},
+              {-36,-68}},                                                                                                                                                                                                        textString = "Longitudinal Dynamics"), Text(lineColor = {255, 0, 0}, fillPattern = FillPattern.Solid, extent = {{12, 0}, {58, -8}}, textString = "PowerTrain")}),
     Icon(coordinateSystem(preserveAspectRatio = true, extent = {{-100, -100}, {100, 100}}), graphics),
     experiment(StopTime = 400, StartTime = 0, Tolerance = 1e-06, Interval = 0.2),
     Documentation(info = "<html>

@@ -27,9 +27,14 @@ model SHEVpowerFiltSoc "Ice, Generator, DriveTrain, all map-based"
     Placement(transformation(extent = {{-80, -34}, {-50, -4}})));
   EHPTlib.SupportModels.Miscellaneous.Batt1 battery(ICellMax = 500, QCellNom = 25 * 3600, R0Cell = 0.35E-3, efficiency = 0.9, iCellEfficiency = 200, ns = 200) annotation (
     Placement(transformation(extent = {{0, -24}, {20, -4}})));
-  EHPTlib.MapBased.OneFlangeFVCT drive(effTableName = "motEffTable",
-     mapsFileName = "SHEVmaps.txt", effMapOnFile = false, powMax = 150e3, tauMax = 1000, wMax = 3000) annotation (
-    Placement(visible = true, transformation(extent={{68,-10},{88,-30}},      rotation = 0)));
+  EHPTlib.MapBased.OneFlange drive(
+    effTableName="motEffTable",
+    effMapFileName="SHEVmaps.txt",
+    effMapOnFile=false,
+    powMax=150e3,
+    tauMax=1000,
+    wMax=3000) annotation (Placement(visible=true, transformation(extent={{68,-10},
+            {88,-30}}, rotation=0)));
   Modelica.Electrical.Analog.Sensors.PowerSensor gsPow annotation (
     Placement(transformation(extent = {{-32, -20}, {-12, 0}})));
   Modelica.Blocks.Math.Feedback fbSOC annotation (
@@ -64,7 +69,7 @@ equation
   connect(gear.flange_a, drive.flange_a) annotation (
     Line(points={{-78,-60},{-84,-60},{-84,-42},{96,-42},{96,-20},{88,-20}}));
   connect(drive.tauRef, driver.tauRef) annotation (
-    Line(points={{67.8,-20},{64,-20},{64,24},{82,24},{82,100},{-79,100}},                              color = {0, 0, 127}));
+    Line(points={{66.6,-20},{64,-20},{64,24},{82,24},{82,100},{-79,100}},                              color = {0, 0, 127}));
   connect(battery.n, drive.pin_p) annotation (
     Line(points={{20.1,-20},{24,-20},{24,-28},{32,-28},{32,-24},{68,-24}},                        color = {0, 0, 255}));
   connect(gsPow.nv, drive.pin_p) annotation (

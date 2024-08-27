@@ -1,4 +1,4 @@
-within EHPTexamples.SHEV;
+﻿within EHPTexamples.SHEV;
 model SHEV_OO "Ice, Generator, DriveTrain, all map-based"
   //€
   extends Modelica.Icons.Example;
@@ -20,8 +20,12 @@ model SHEV_OO "Ice, Generator, DriveTrain, all map-based"
     Placement(visible = true, transformation(origin = {26, -56}, extent = {{-8, -8}, {8, 8}}, rotation = 270)));
   EHPTlib.SupportModels.Miscellaneous.Batt1 battery(ICellMax = 500, QCellNom = 25 * 3600, R0Cell = 0.35E-3, SOCInit = 0.5, efficiency = 0.9, iCellEfficiency = 200, ns = 100) annotation (
     Placement(visible = true, transformation(origin = {-2, 26}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  EHPTlib.MapBased.OneFlangeFVCT drive(effTableName = "motEffTable", mapsFileName = "SHEVmaps.txt", effMapOnFile = false, powMax = 150e3, tauMax = 1000, wMax = 3000) annotation (
-    Placement(visible = true, transformation(extent = {{64, 16}, {84, -4}}, rotation = 0)));
+  EHPTlib.MapBased.OneFlange drive(
+    effMapOnFile=false,
+    powMax=150e3,
+    tauMax=1000,
+    wMax=3000) annotation (Placement(visible=true, transformation(extent={{64,16},
+            {84,-4}}, rotation=0)));
   Modelica.Electrical.Analog.Sensors.PowerSensor gsPow annotation (
     Placement(visible = true, transformation(extent = {{-36, 0}, {-16, 20}}, rotation = 0)));
   EHPTlib.MapBased.ECUs.ShevEMS ems(powHigh = 60e3, powLow = 30e3, powMax = 200e3, powPerSoc = 300e3, socRef = 0.6) annotation (
@@ -60,7 +64,7 @@ equation
   connect(drivePow.nc, drive.pin_n) annotation (
     Line(points={{50,16},{64,16},{64,10},{64,10}},                    color = {0, 0, 255}));
   connect(driver.tauRef, drive.tauRef) annotation (
-    Line(points={{75,60},{57,60},{57,4.5},{63.8,4.5},{63.8,6}},                  color = {0, 0, 127}));
+    Line(points={{75,60},{57,60},{57,4.5},{62.6,4.5},{62.6,6}},                  color = {0, 0, 127}));
   connect(ground1.p, drive.pin_p) annotation (
     Line(points={{22,-4},{22,2},{64,2}},                    color = {0, 0, 255}));
   connect(gsPow.nv, drive.pin_p) annotation (
