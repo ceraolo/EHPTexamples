@@ -35,7 +35,7 @@ model PSecu2 "Full Power Split Device power train using Map-Based components"
     Placement(visible = true, transformation(origin = {38, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (
     Placement(visible = true, transformation(origin={10,20},    extent = {{10, 10}, {-10, -10}}, rotation = 270)));
-  EHPTlib.MapBased.OneFlangeFVCTconn gen(
+  EHPTlib.MapBased.OneFlangeConn gen(
     effMapOnFile=true,
     mapsFileName=Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/PSDmaps.txt"),
     effTableName="genEffTable") annotation (Placement(visible=true,
@@ -56,11 +56,11 @@ equation
       color={255,204,51},
       thickness=0.5));
   connect(gen.pin_n, bat.n) annotation (
-    Line(points={{-38,14.5},{-10,14.5},{-10,10.1}},      color = {0, 0, 255}));
+    Line(points={{-38,15.4},{-10,15.4},{-10,10.1}},      color = {0, 0, 255}));
   connect(gen.flange_a, PSD.sun) annotation (
     Line(points={{-58,19},{-70,19},{-70,52},{-60,52}}));
   connect(gen.conn, ECU.conn) annotation (Line(
-      points={{-57,10.225},{-57,-20},{-12,-20},{-12,-32.18}},
+      points={{-57,11.98},{-57,-20},{-12,-20},{-12,-32.18}},
       color={255,204,51},
       thickness=0.5));
   connect(ground.p, bat.n) annotation (
@@ -96,7 +96,7 @@ equation
   connect(PSD.carrier, ice.flange_a) annotation (
     Line(points = {{-60, 56}, {-78, 56}}, color = {0, 0, 0}, smooth = Smooth.None));
   connect(gen.pin_p, bat.p) annotation (
-    Line(points={{-38,23.5},{-38,24},{-22,24},{-22,10}},                      color = {0, 0, 255}));
+    Line(points={{-38,22.6},{-38,24},{-22,24},{-22,10}},                      color = {0, 0, 255}));
   connect(driver.tauRef, ECU.tauRef)
     annotation (Line(points={{-39,-40},{-38,-41},{-24,-41}}, color={0,0,127}));
   annotation (
