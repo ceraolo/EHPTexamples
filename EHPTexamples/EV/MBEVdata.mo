@@ -49,7 +49,7 @@ model MBEVdata "Simulates a very basic Electric Vehicle"
     Placement(transformation(extent = {{-8, -8}, {8, 8}}, rotation = 0, origin = {-42, 14})));
   Modelica.Blocks.Math.Add add(k1 = -1) annotation (
     Placement(transformation(extent = {{-42, -26}, {-30, -14}})));
-  Modelica.Blocks.Math.Gain tqToForce(k = gear.ratio * wheel.radius) annotation (
+  EHPTlib.SupportModels.Miscellaneous.Gain tqToForce(k = gear.ratio * wheel.radius) annotation (
     Placement(visible = true, transformation(extent = {{0, -26}, {12, -14}}, rotation = 0)));
   Modelica.Blocks.Nonlinear.Limiter cutNeg(uMax = 0, uMin = -Modelica.Constants.inf) annotation (
     Placement(visible = true, transformation(origin = {-14, -20}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
