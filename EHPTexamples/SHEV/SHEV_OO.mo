@@ -32,8 +32,12 @@ model SHEV_OO "Ice, Generator, DriveTrain, all map-based"
     Placement(visible = true, transformation(origin = {-20, 58}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   EHPTlib.MapBased.GensetOO genset(gsRatio = 1,
     mapsFileName=Modelica.Utilities.Files.loadResource(
-        "modelica://EHPTexamples/Resources/SHEVmaps.txt"),   maxGenW = 300,
-    maxSpeedNorm=600,     maxPow = 45000, maxTau = 500, wIceStart = 300) annotation (
+      "modelica://EHPTexamples/Resources/SHEVmaps.txt"),
+      maxGenW = 300,
+      maxSpeedNorm=600,
+      maxGenPow = 45000,
+      maxTau = 500,
+      wIceStart = 300) annotation (
     Placement(visible = true, transformation(extent = {{-84, -14}, {-54, 16}}, rotation = 0)));
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(
     CycleFileName=Modelica.Utilities.Files.loadResource(
@@ -47,7 +51,7 @@ equation
   connect(gsPow.pc, genset.pin_p) annotation (
     Line(points = {{-36, 10}, {-54, 10}}, color = {0, 0, 255}));
   connect(ems.pcPowReq, genset.powRef) annotation (
-    Line(points={{-30.8,52},{-59.85,52},{-59.85,18.25}}, color = {0, 0, 127}));
+    Line(points={{-30.8,52},{-60.45,52},{-60.45,18.25}}, color = {0, 0, 127}));
   connect(ems.on, genset.ON) annotation (
     Line(points = {{-30.8, 64}, {-78, 64}, {-78, 18.4}}, color = {255, 0, 255}));
   connect(drive.flange_a, gear.flange_a) annotation (

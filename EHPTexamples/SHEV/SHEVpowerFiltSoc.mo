@@ -22,10 +22,20 @@ model SHEVpowerFiltSoc "Ice, Generator, DriveTrain, all map-based"
     Placement(visible = true, transformation(extent = {{-100, 90}, {-80, 110}}, rotation = 0)));
   EHPTlib.MapBased.Genset genset(gsRatio = 1,
     mapsFileName=Modelica.Utilities.Files.loadResource(
-        "modelica://EHPTexamples/Resources/SHEVmaps.txt"),  maxGenW = 300,
-    maxSpeedNorm=300,    maxPow = 45000, maxTau = 500, wIceStart = 300) annotation (
+      "modelica://EHPTexamples/Resources/SHEVmaps.txt"),
+      maxGenW = 300,
+      maxSpeedNorm=300,
+      maxGenPow = 45000,
+      maxTau = 500,
+      wIceStart = 300) annotation (
     Placement(transformation(extent = {{-80, -34}, {-50, -4}})));
-  EHPTlib.SupportModels.Miscellaneous.Batt1 battery(ICellMax = 500, QCellNom = 25 * 3600, R0Cell = 0.35E-3, efficiency = 0.9, iCellEfficiency = 200, ns = 200) annotation (
+  EHPTlib.SupportModels.Miscellaneous.Batt1 battery(
+    ICellMax = 500,
+    QCellNom = 25 * 3600,
+    R0Cell = 0.35E-3,
+    efficiency = 0.9,
+    iCellEfficiency = 200,
+    ns = 200) annotation (
     Placement(transformation(extent = {{0, -24}, {20, -4}})));
   EHPTlib.MapBased.OneFlange drive(
     effTableName="motEffTable",
@@ -77,7 +87,7 @@ equation
   connect(socErrToPow.y, add.u2) annotation (
     Line(points = {{-35, 48}, {-46, 48}, {-46, 66}, {12, 66}, {12, 74}, {6, 74}}, color = {0, 0, 127}));
   connect(toPowRef.y, genset.powRef) annotation (
-    Line(points = {{-46.8, 80}, {-56, 80}, {-56, -1.75}, {-55.85, -1.75}}, color = {0, 0, 127}));
+    Line(points={{-46.8,80},{-56,80},{-56,-1.75},{-56.45,-1.75}},          color = {0, 0, 127}));
   connect(powFilt.y, add.u1) annotation (
     Line(points = {{17.2, 86}, {6, 86}}, color = {0, 0, 127}));
   connect(speedSensor1.v, driver.V) annotation (
