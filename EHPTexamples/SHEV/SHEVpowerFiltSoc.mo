@@ -1,4 +1,4 @@
-﻿within EHPTexamples.SHEV;
+within EHPTexamples.SHEV;
 model SHEVpowerFiltSoc "Ice, Generator, DriveTrain, all map-based"
   //€
   extends Modelica.Icons.Example;
@@ -21,6 +21,9 @@ model SHEVpowerFiltSoc "Ice, Generator, DriveTrain, all map-based"
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/Sort1.txt"), extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = 200.0, yMax = 2e3) annotation (
     Placement(visible = true, transformation(extent = {{-100, 90}, {-80, 110}}, rotation = 0)));
   EHPTlib.MapBased.Genset genset(gsRatio = 1,
+    throttlePerWerr=0.01,
+    jIce=0.5,
+    jGen=0.25,
     mapsFileName=Modelica.Utilities.Files.loadResource(
       "modelica://EHPTexamples/Resources/SHEVmaps.txt"),
       maxGenW = 300,

@@ -12,7 +12,7 @@ model PSecu2 "Full Power Split Device power train using Map-Based components"
   Modelica.Mechanics.Rotational.Components.IdealPlanetary PSD(ratio = 78 / 30) annotation (
     Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 0, origin = {-50, 52})));
   Modelica.Mechanics.Rotational.Components.IdealGear idealGear(ratio = 3.905, flange_b(
-        phi(start=0, fixed=true)))                                            annotation (
+        phi(start=0, fixed=true)))   annotation (
     Placement(transformation(extent = {{2, 42}, {22, 62}})));
   Modelica.Mechanics.Translational.Sensors.SpeedSensor carVel annotation (
     Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 270, origin = {78, -12})));
@@ -21,7 +21,7 @@ model PSecu2 "Full Power Split Device power train using Map-Based components"
   EHPTlib.SupportModels.Miscellaneous.DragForce dragForce(fc = 0.014, rho = 1.226, S = 2.2, Cx = 0.26, m = mass.m) annotation (
     Placement(transformation(extent = {{-9, -9}, {9, 9}}, rotation = 90, origin = {89, 29})));
   EHPTlib.MapBased.IceConnP ice(wIceStart = wIceStart,
-    flange_a(phi(start=0, fixed=true)))                                              annotation (
+    flange_a(phi(start=0, fixed=true)))   annotation (
     Placement(transformation(extent = {{-98, 46}, {-78, 66}})));
   EHPTlib.SupportModels.Miscellaneous.Batt1Conn bat(ECellMin = 0.9, ECellMax = 1.45, R0Cell = 0.0003, ns = 168, QCellNom = 2 * 6.5 * 3600.0, SOCInit = 0.6, ICellMax = 1e5, iCellEfficiency = 15 * 6.5) annotation (
     Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-16, 0})));
