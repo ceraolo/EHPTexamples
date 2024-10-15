@@ -44,7 +44,7 @@ model SHEVpowerFilt "Ice, Generator, DriveTrain, all map-based"
       ns = 100) annotation (
     Placement(visible = true, transformation(extent = {{0, 20}, {20, 40}}, rotation = 0)));
   EHPTlib.MapBased.OneFlange drive(
-    efficiencyFromTable=false,
+    efficiencyFromTable= true,
     effTableName="motEffTable",
     effMapOnFile=false,
     powMax=150e3,
