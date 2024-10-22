@@ -29,7 +29,7 @@ model SHEVpowerFiltSoc "Ice, Generator, DriveTrain, all map-based"
       maxGenW = 300,
       maxGenPow = 45000,
       maxTau = 500,
-      wIceStart = 300) annotation (
+      wIceStart = 300, efficiencyName = "gensetDriveEffTable") annotation (
     Placement(transformation(extent = {{-80, -34}, {-50, -4}})));
   EHPTlib.SupportModels.Miscellaneous.Batt1 battery(
     ICellMax = 500,

@@ -39,7 +39,7 @@ model SHEV_OO "Ice, Generator, DriveTrain, all map-based"
       maxGenW = 300,
       maxGenPow = 45000,
       maxTau = 500,
-      wIceStart = 300) annotation (
+      wIceStart = 300, efficiencyName = "gensetDriveEffTable") annotation (
     Placement(visible = true, transformation(extent = {{-84, -14}, {-54, 16}}, rotation = 0)));
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(
     CycleFileName=Modelica.Utilities.Files.loadResource(
