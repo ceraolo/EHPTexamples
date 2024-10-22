@@ -31,13 +31,12 @@ model SHEV_OO "Ice, Generator, DriveTrain, all map-based"
   EHPTlib.MapBased.ECUs.ShevEMS ems(powHigh = 60e3, powLow = 30e3, powMax = 200e3, powPerSoc = 300e3, socRef = 0.6) annotation (
     Placement(visible = true, transformation(origin = {-20, 58}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   EHPTlib.MapBased.GensetOO genset(gsRatio = 1,
-    throttlePerWerr=0.01,
+    throttlePerWerr=0.1,
     jIce=0.5,
     jGen=0.25,
     mapsFileName=Modelica.Utilities.Files.loadResource(
       "modelica://EHPTexamples/Resources/SHEVmaps.txt"),
       maxGenW = 300,
-      maxSpeedNorm=600,
       maxGenPow = 45000,
       maxTau = 500,
       wIceStart = 300) annotation (

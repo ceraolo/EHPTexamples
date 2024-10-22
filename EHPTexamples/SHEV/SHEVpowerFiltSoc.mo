@@ -18,16 +18,15 @@ model SHEVpowerFiltSoc "Ice, Generator, DriveTrain, all map-based"
     Placement(transformation(extent = {{-8, -8}, {8, 8}}, rotation = 90, origin = {80, -68})));
   Modelica.Mechanics.Translational.Sensors.SpeedSensor speedSensor1 annotation (
     Placement(transformation(extent = {{-8, -8}, {8, 8}}, rotation = 270, origin = {26, -74})));
-  EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/Sort1.txt"), extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = 200.0, yMax = 2e3) annotation (
+  EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/nedc.txt"), extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = 200.0, yMax = 2e3) annotation (
     Placement(visible = true, transformation(extent = {{-100, 90}, {-80, 110}}, rotation = 0)));
   EHPTlib.MapBased.Genset genset(gsRatio = 1,
-    throttlePerWerr=0.01,
+    throttlePerWerr=0.1,
     jIce=0.5,
     jGen=0.25,
     mapsFileName=Modelica.Utilities.Files.loadResource(
       "modelica://EHPTexamples/Resources/SHEVmaps.txt"),
       maxGenW = 300,
-      maxSpeedNorm=300,
       maxGenPow = 45000,
       maxTau = 500,
       wIceStart = 300) annotation (
