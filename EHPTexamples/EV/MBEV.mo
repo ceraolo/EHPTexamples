@@ -2,11 +2,11 @@ within EHPTexamples.EV;
 model MBEV "Simulates a very basic Electric Vehicle"
   import Modelica;
   extends Modelica.Icons.Example;
-  Modelica.Units.SI.Energy enBatDel(start=0, fixed=true);
-  Modelica.Units.SI.Energy enDTdel(start=0, fixed=true);
-  Modelica.Units.SI.Energy enP1del(start=0, fixed=true);
-  Modelica.Units.SI.Energy enBattLoss(start=0, fixed=true);
-  Modelica.Units.SI.Energy enBraking(start=0, fixed=true);
+  Modelica.Units.SI.Energy enBatDel(start=0, fixed=true)"Energy delivered by the battery";
+  Modelica.Units.SI.Energy enEDgen(start=0, fixed=true) "Generated eleDrive mechanical power";
+  Modelica.Units.SI.Energy enP1del(start=0, fixed=true)"Energy delivered to vehicle mass";
+  Modelica.Units.SI.Energy enBattLoss(start=0, fixed=true) "Energy loss inside battery";
+  Modelica.Units.SI.Energy enBraking(start=0, fixed=true) "Braking energy";
   Modelica.Mechanics.Rotational.Components.IdealGear gear(ratio = 6, flange_b(  phi(start=0, fixed=true))) annotation (
     Placement(visible = true, transformation(origin = {-20, 14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/NEDC.txt"), extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, yMax = 100000.0, k = 100) annotation (
@@ -53,6 +53,11 @@ model MBEV "Simulates a very basic Electric Vehicle"
   Modelica.Blocks.Nonlinear.Limiter cutNeg(uMax = 0, uMin = -Modelica.Constants.inf) annotation (
     Placement(visible = true, transformation(origin = {-14, -20}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
 equation
+  der(enBatDel) = (batt1.p.v - batt1.n.v) * batt1.n.i;
+  der(enEDgen) = eleDrive.powSensor.power;
+  der(enP1del) = mP1.power;
+  der(enBattLoss) = batt1.powerLoss;
+  der(enBraking) = if mP1.power > 0 then 0 else -mP1.power;
   connect(batt1.n, eleDrive.pin_n) annotation (
     Line(points={{-91.9,38},{-80,38},{-80,11.4},{-74,11.4}},      color = {0, 0, 255}));
   connect(eleDrive.pin_n, ground.p) annotation (
@@ -85,11 +90,6 @@ equation
     Line(points = {{-10, 14}, {-4, 14}}));
   connect(dragF.flange,mP2. flange_b) annotation (
     Line(points = {{98, -14}, {98, -6}}, color = {0, 127, 0}));
-  der(enBatDel) = (batt1.p.v - batt1.n.v) * batt1.n.i;
-  der(enDTdel) = eleDrive.powSensor.power;
-  der(enP1del) = mP1.power;
-  der(enBattLoss) = batt1.powerLoss;
-  der(enBraking) = if mP1.power > 0 then 0 else -mP1.power;
   connect(add.u2, driver.tauRef) annotation (
     Line(points = {{-43.2, -23.6}, {-86, -23.6}, {-86, 0}, {-95, 0}}, color = {0, 0, 127}));
   connect(edTau.flange_b, gear.flange_a) annotation (
