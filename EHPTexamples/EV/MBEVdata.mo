@@ -12,7 +12,7 @@ model MBEVdata "Simulates a very basic Electric Vehicle"
     Placement(visible = true, transformation(origin = {-20, 14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/NEDC.txt"), extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = data.kContr, yMax = 100000.0) annotation (
     Placement(visible = true, transformation(extent = {{-116, -10}, {-96, 10}}, rotation = 0)));
-  Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.5715) annotation (
+  Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = data.radius) annotation (
     Placement(visible = true, transformation(extent = {{-4, 4}, {16, 24}}, rotation = 0)));
   EHPTlib.MapBased.OneFlange eleDrive(
     J=data.J,
@@ -33,7 +33,7 @@ model MBEVdata "Simulates a very basic Electric Vehicle"
   Modelica.Electrical.Analog.Basic.Ground ground annotation (
     Placement(visible = true, transformation(extent = {{-84, -20}, {-64, 0}}, rotation = 0)));
   Modelica.Mechanics.Translational.Sensors.PowerSensor mP1 annotation (
-    Placement(visible = true, transformation(origin = {32, 14}, extent = {{-6, -8}, {6, 8}}, rotation = 0)));
+    Placement(transformation(origin = {32, 14}, extent = {{-6, -8}, {6, 8}})));
   Modelica.Mechanics.Translational.Components.Mass mass(m = data.m, v(fixed=
           true))                                                    annotation (
     Placement(visible = true, transformation(extent = {{56, 4}, {76, 24}}, rotation = 0)));
