@@ -42,10 +42,8 @@ model PSecu3 "Full Power Split Device power train using Map-Based components"
   EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = Modelica.Utilities.Files.loadResource("modelica://EHPTexamples/Resources/NEDC.txt"), k = 1, yMax = 1.8) annotation (
     Placement(visible = true, transformation(extent = {{-60, -50}, {-40, -30}}, rotation = 0)));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (
-    Placement(visible = true, transformation(origin={10,20},    extent = {{-10, -10}, {10, 10}}, rotation=90)));
+    Placement(transformation(origin = {10, 10}, extent = {{-10, -10}, {10, 10}})));
 equation
-  connect(ground.p, bat.n) annotation (
-    Line(points={{0,20},{-10,20},{-10,10.1}},                               color = {0, 0, 255}));
   connect(carVel.v, driver.V) annotation (
     Line(points = {{78, -23}, {78, -58}, {-50, -58}, {-50, -51.2}}, color = {0, 0, 127}));
   connect(mot.conn1, ECU.conn) annotation (
@@ -90,6 +88,8 @@ equation
     Line(points = {{78, -2}, {78, 52}, {74, 52}}, color = {0, 127, 0}, smooth = Smooth.None));
   connect(driver.tauRef, ECU.tauRef)
     annotation (Line(points={{-39,-40},{-38,-41},{-24,-41}}, color={0,0,127}));
+  connect(ground.p, bat.n) annotation(
+    Line(points = {{10, 20}, {-14, 20}, {-14, 10}, {-10, 10}}, color = {0, 0, 255}));
   annotation (
     __Dymola_experimentSetupOutput,
     Documentation(info = "<html><head></head><body><p>This model simulates a PSD based power train with a simple control logic, in its ECU:</p>
